@@ -1,0 +1,11 @@
+{
+  "name": "ckm",
+  "version": "1.0.0",
+  "description": "Photo viewing and sorting website",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "FTC",
+  "license": "ISC"
+}
