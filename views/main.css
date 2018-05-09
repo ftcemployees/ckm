@@ -52,7 +52,9 @@ body{
 	color: #CEE3F6;
 	font: 20px;
 	border: 1px solid #CEE3F6;
+	cursor: pointer;
 }
+
 .filter-btn {
   float: left;
   font-size: 15px;
@@ -68,6 +70,7 @@ body{
 	color: #04B4AE;
 	font: 20px;
 	border: 1px solid #CEE3F6;
+	cursor: pointer;cursor: pointer;
 }
 .top_menu{
 	width: 350px;
@@ -82,6 +85,7 @@ body{
 	display: inline-block;
 	padding: 10px;
 	font: 14px Roboto;
+	cursor: pointer;
 }
 .top_menu li:hover{
 	color: #43A047;
@@ -125,113 +129,57 @@ body{
 .picture:hover{
 	opacity: 0.4;
 }
-.pic-1{
+
+.pic {
 	position: relative;
 	display: inline-block;
-	background-image: url("1.jpeg");
 	background-size: cover;
 	width: 300px; 
 	height: 200px;
 	overflow: hidden;
+}
+
+.pic-1{
+	background-image: url("1.jpeg");
 }
 .pic-2{
-	position: relative;
-	display: inline-block;
 	background-image: url("2.jpg");
-	background-size: cover;
-	width: 300px; 
-	height: 200px;
-	overflow: hidden;
 }
 .pic-3{
-	position: relative;
-	display: inline-block;
 	background-image: url("3.jpg");
-	background-size: cover;
-	width: 300px; 
-	height: 200px;
-	overflow: hidden;
 }
 .pic-4{
-	display: inline-block;
 	background-image: url("4.jpg");
-	background-size: cover;
-	width: 300px; 
-	height: 200px;
-	overflow: hidden;
 }
 .pic-5{
-	display: inline-block;
 	background-image: url("5.jpg");
-	background-size: cover;
-	width: 300px; 
-	height: 200px;
-	overflow: hidden;
 }
 .pic-6{
-	display: inline-block;
 	background-image: url("6.jpeg");
-	background-size: cover;
-	width: 300px; 
-	height: 200px;
-	overflow: hidden;
 }
 .pic-7{
-	display: inline-block;
 	background-image: url("7.jpg");
-	background-size: cover;
-	width: 300px; 
-	height: 200px;
-	overflow: hidden;
 }
 .pic-8{
-	display: inline-block;
 	background-image: url("8.jpg");
-	background-size: cover;
-	width: 300px; 
-	height: 200px;
-	overflow: hidden;
 }
 .pic-9{
-	display: inline-block;
 	background-image: url("9.jpg");
-	background-size: cover;
-	width: 300px; 
-	height: 200px;
-	overflow: hidden;
 }
 .pic-10{
-	display: inline-block;
 	background-image: url("10.jpg");
-	background-size: cover;
-	width: 300px; 
-	height: 200px;
-	overflow: hidden;
 }
 .pic-11{
-	display: inline-block;
 	background-image: url("11.jpg");
-	background-size: cover;
-	width: 300px; 
-	height: 200px;
-	overflow: hidden;
 }
 .pic-12{
-	display: inline-block;
 	background-image: url("12.jpg");
-	background-size: cover;
-	width: 300px; 
-	height: 200px;
-	overflow: hidden;
 }
 .pic-13{
-	display: inline-block;
 	background-image: url("13.jpeg");
-	background-size: cover;
-	width: 300px; 
-	height: 200px;
-	overflow: hidden;
+
 }
+
 .text-wrapper:hover{
 	display:inline-block;
 }
