@@ -43,14 +43,17 @@ export class Login extends React.Component {
             <div className="login-page">
                 <div className="form">
                 <form className="login-form">
+                    <p class="message-two">Login</p>
+                    <br />
                     <input type="text" placeholder="email" onChange={this.handleUserNameInput} value={this.state.user_name} />
                     <input type="password" placeholder="password" onChange={this.handlePwdInput} value={this.state.pwd} />
                     <button onClick={this.handleLogin}>login</button>
                     <p className="message">Not registered? <a href="#">Create an account</a></p>
+                    <p class="incorrect">Email or Password is incorrect</p>
                 </form>
                 </div>
             </div>
-            );
+            ); 
     }
 }
 

@@ -10,11 +10,6 @@
   padding: 8% 0 0;
   margin: auto;
 }
-.home-page {
-  width: 500px;
-  padding: 100px ;
-  margin: auto;
-}
 .form {
   position: relative;
   z-index: 1;
@@ -49,9 +44,12 @@
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
+  
 }
 .form button:hover,.form button:active,.form button:focus {
-  background: #43A047;
+  background: #CEE3F6;
+  color: #04B4AE;
+  border: 1px solid #04B4AE;
 }
 .form .message {
   margin: 15px 0 0;
@@ -61,7 +59,8 @@
 .form .message-two {
   margin: 10px 0 0;
   color: #04B4AE;
-  font-size: 25px;
+  font: 35px Alex brush;
+  text-shadow:rgb(100, 100, 100) 3px 3px 5px;
 }
 .form .message a {
   color: #04B4AE;
@@ -104,16 +103,20 @@
   color: #EF3B3A;
 }
 body {
-  background: #A9D0F5; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #A9D0F5, #8DC26F);
-  background: -moz-linear-gradient(right, #A9D0F5, #8DC26F);
-  background: -o-linear-gradient(right, #A9D0F5, #8DC26F);
+  /*background: #A9D0F5; /* fallback for old browsers */
+  background: -webkit-radial-gradient(center, circle, #A9D0F5, #FFFFFF);
+  /*background: -moz-linear-gradient(right, #A9D0F5, #8DC26F);
+  background: -o-linear-gradient(right, #ffffff, #8DC26F);
   background: linear-gradient(to left, #A9D0F5, #8DC26F);
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;      
+  -moz-osx-font-smoothing: grayscale;8*/    
 }
-
-/*Home page*/
+.incorrect {
+	margin: 15px 0 0;
+	color: red;
+	font-size: 12px;
+	visibility: hidden;
+}
 
 
