@@ -5,9 +5,11 @@
 }
 h1{
 	font: 80px Alex brush;
+	text-shadow:rgb(110, 110, 100) 3px 3px 5px;
 }
 h1:hover{
 	color:#04B4AE;
+	transition: all 0.5s ease-in-out;
 }
 
 h4{
@@ -19,10 +21,10 @@ header, section, footer, aside, nav, article, hgroup{
 }
 body{
   background: #A9D0F5; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, #A9D0F5, #8DC26F);
-  background: -moz-linear-gradient(right, #A9D0F5, #8DC26F);
-  background: -o-linear-gradient(right, #A9D0F5, #8DC26F);
-  background: linear-gradient(to left, #A9D0F5, #FFFFFF);
+  background: -webkit-linear-gradient(top, #A9D0F5, #8DC26F);
+  background: -moz-linear-gradient(top, #A9D0F5, #8DC26F);
+  background: -o-linear-gradient(top, #A9D0F5, #8DC26F);
+  background: linear-gradient(to bottom, #A9D0F5, #FFFFFF);
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -53,6 +55,7 @@ body{
 	font: 20px;
 	border: 1px solid #CEE3F6;
 	cursor: pointer;
+	transition: all 0.5s ease-in-out;
 }
 
 .filter-btn {
@@ -71,35 +74,36 @@ body{
 	font: 20px;
 	border: 1px solid #CEE3F6;
 	cursor: pointer;cursor: pointer;
+	transition: all 0.5s ease-in-out;
 }
 .top_menu{
 	width: 350px;
 	color: #04B4AE;
 	margin: auto;
 	text-align: center;
-	padding-bottom: 30px;
+	padding-bottom: 50px;
 }
 
 .top_menu li{
 	list-style: none;
 	display: inline-block;
-	padding: 10px;
-	font: 14px Roboto;
+	padding: 8px;
+	font: 16px Roboto;
 	cursor: pointer;
+	width: 80px;
 }
 .top_menu li:hover{
 	color: #43A047;
 	font: 18px Roboto;
+	border-top: 2px solid #43A047;
+	transition: all 0.5s ease-in-out;
 }
 .new_div{
-
-	display:-webkit-box;
+		display:-webkit-box;
 	-webkit-box-orient:horizontal;
-	/*max-width:800px;
-	margin: 800px;
-	padding:800px;*/
 }
 .main_section{
+
 	-webkit-box-flex: 1;
 	margin: auto; 
 	text-align: center;
@@ -115,16 +119,16 @@ body{
 }
 .the_footer{
 	text-align: center;
-	padding: 20px;
-	border-top: 1px solid black;
+	padding: 30px;
+	margin-top: 50px;
+	border-top: 2px solid #04B4AE;
 	color: #b3b3b3
 }
 .picture{
 	margin-right: 10px;
 	margin-bottom: 10px;
 	width: 300px; 
-	height: 200px;
-	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+	height: 300px;
 }
 .picture:hover{
 	opacity: 0.4;
@@ -135,7 +139,8 @@ body{
 	display: inline-block;
 	background-size: cover;
 	width: 300px; 
-	height: 200px;
+	height: 300px;
+	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 	overflow: hidden;
 }
 
@@ -179,6 +184,14 @@ body{
 	background-image: url("13.jpeg");
 
 }
+.pic-14{
+	background-image: url("14.jpg");
+
+}
+.pic-15{
+	background-image: url("15.jpg");
+
+}
 
 .text-wrapper:hover{
 	display:inline-block;
@@ -187,7 +200,7 @@ body{
 	display:inline-block;
 	position: relative;
 	width: 300px; 
-	height: 200px;
+	height: 300px;
 	opacity: 0;
 }
 .description:hover{
@@ -195,14 +208,12 @@ body{
 	color: #000000;
 	background-color: rgba(255, 255, 255, 0.3);
 	font: 30px Alex brush;
-	padding-top: 100px;
+	padding-top: 120px;
 	opacity: 1;
-	transition: all 1s ease-in-out;
+	transition: all 0.5s ease-in-out;
 }
 input[type="text"] {
 height: 15px;
 width: 80px;
 }
-title{
-	
-}
+
