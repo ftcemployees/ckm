@@ -9,6 +9,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use(express.static(__dirname));
 
+let user = {};
+
 con.query(queries.login('alexey', 'oceansid'), function (err, result, fields) {
     if (err) throw err;
     app.get('/user', (req, res) => {
@@ -21,8 +23,9 @@ app.post('/login', function (req, res) {
     const pwd = req.body.pwd;
     con.query(queries.login(userName, pwd), function (err, result, fields) {
         if (err) throw err;
-        res.json(result[0]);
-        console.log(result);
+        res.json(result[0].name_first);
+        user = result[0];
+        console.log(user.name_first);
     });
 })
 
