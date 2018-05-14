@@ -72,7 +72,7 @@ export class Login extends React.Component {
                     <input type="password" placeholder="password" onChange={this.handlePwdInput} value={this.state.pwd} />
                     <button onClick={this.handleLogin}>login</button>
                     <p className="message">Not registered? <a href="/new_user">Create an account</a></p>
-                    <p className="incorrect">Email or Password is incorrect</p>
+                    <p className="incorrect" style={this.state.incorrect ? {} : {visibility: 'hidden'}}>Email or Password is incorrect</p>
                 </form>
                 </div>
             </div>
