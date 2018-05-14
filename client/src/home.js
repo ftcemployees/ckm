@@ -129,5 +129,6 @@ export const Main = () => {
           </footer>
         </div>
         </div>
+	
     )
 }

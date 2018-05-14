@@ -22,8 +22,10 @@
 body{
     background: -webkit-radial-gradient(center, circle, #A9D0F5, #FFFFFF);
 }
-.home-page-body{
-	 background: #A9D0F5;
+ .home_page{
+     max-width: inherit;
+     padding: 100px;
+	  background: #A9D0F5;
     /* fallback for old browsers */
      background: -webkit-linear-gradient(top, #A9D0F5, #8DC26F);
      background: -moz-linear-gradient(top, #A9D0F5, #8DC26F);
@@ -32,10 +34,6 @@ body{
      font-family: "Roboto", sans-serif;
      -webkit-font-smoothing: antialiased;
      -moz-osx-font-smoothing: grayscale;
-}
- .home_page{
-     max-width: inherit;
-     margin: 100px;
 }
  .top_header{
      margin: 50px;
@@ -56,13 +54,15 @@ body{
      position: absolute;
      top: 0;
      right: 0;
+	 text-decoration: none;
+	 color: #000000;
 }
  .contact-btn a:hover {
      color: #CEE3F6;
      font: 20px;
      border: 1px solid #CEE3F6;
      cursor: pointer;
-     transition: all 0.5s ease-in-out;
+     transition: all 0.3s ease-in-out;
 }
  .filter-btn {
      float: left;
