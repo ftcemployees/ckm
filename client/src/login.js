@@ -6,7 +6,8 @@ export class Login extends React.Component {
         super(props);
         this.state = {
             user_name: '',
-            pwd: ''
+            pwd: '',
+            incorrect: false
         }
         this.handleUserNameInput = this.handleUserNameInput.bind(this);
         this.handlePwdInput = this.handlePwdInput.bind(this);
@@ -52,7 +53,12 @@ export class Login extends React.Component {
           .catch(function (error) {
             console.log(error);
           });
-          sessionStorage.getItem('name_first') ? this.props.history.push('/') : '';
+        
+        if (sessionStorage.getItem('name_first')) {
+            this.props.history.push('/')
+        } else {
+            this.setState({incorrect: true});
+        }
     }
     
     render() {
