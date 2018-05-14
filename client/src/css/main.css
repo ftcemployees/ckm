@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
+@import url('https://fonts.googleapis.com/css?family=Alex+Brush');
  *{
      margin: 0px;
      padding: 0px;
@@ -41,14 +42,17 @@
      font-family: "Roboto", sans-serif;
 }
  .contact-btn {
-     float: right;
      font-family: "Roboto", sans-serif;
+     float: right;
 }
  .contact-btn a {
      margin-right: 30px;
      margin-top: 30px;
      padding: 8px 18px;
      border: 1px solid #204156;
+     position: absolute;
+     top: 0;
+     right: 0;
 }
  .contact-btn a:hover {
      color: #CEE3F6;

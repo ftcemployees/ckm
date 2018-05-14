@@ -13,6 +13,18 @@ export class Login extends React.Component {
         this.handleLogin = this.handleLogin.bind(this);
     }
     
+    componentWillMount() {
+        if (sessionStorage.getItem('name_first')){
+            sessionStorage.setItem('name_first', '');
+            axios.post('/log_out')
+            .catch(function(error) {
+                if (error)
+                console.log(error);
+            })
+            this.props.history.push('/')
+        }
+    }
+    
     componentDidMount() {
         document.title = 'Login';
     }
@@ -25,17 +37,22 @@ export class Login extends React.Component {
         this.setState({pwd: e.target.value});
     }
     
-    handleLogin() {
-        axios.post('/login', {
+    async handleLogin(e) {
+        e.preventDefault();
+        await axios.post('/login', {
             user_name: this.state.user_name,
             pwd: this.state.pwd
           })
           .then(function (response) {
-            console.log(response.data)
+            if (response.data) {
+                console.log(response.data);
+                sessionStorage.setItem("name_first", response.data);
+            }
           })
           .catch(function (error) {
             console.log(error);
           });
+          sessionStorage.getItem('name_first') ? this.props.history.push('/') : '';
     }
     
     render() {
@@ -48,7 +65,7 @@ export class Login extends React.Component {
                     <input type="text" placeholder="email" onChange={this.handleUserNameInput} value={this.state.user_name} />
                     <input type="password" placeholder="password" onChange={this.handlePwdInput} value={this.state.pwd} />
                     <button onClick={this.handleLogin}>login</button>
-                    <p className="message">Not registered? <a href="#">Create an account</a></p>
+                    <p className="message">Not registered? <a href="/new_user">Create an account</a></p>
                     <p className="incorrect">Email or Password is incorrect</p>
                 </form>
                 </div>
