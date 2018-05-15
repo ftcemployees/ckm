@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { Item } from './Item';
 
 export const Main = () => {
     let loginInfo = '';
@@ -46,81 +46,15 @@ export const Main = () => {
             </aside>
             <section className="main_section">
               <article>
-                <div className="pic-1 pic">
-                  <div className="text-wrapper">
-                    <p className="description">I'm cool description</p>
-                  </div>
-                </div>
-                <div className="pic-2 pic">
-                  <div className="text-wrapper">
-                    <p className="description">description</p>
-                  </div>
-                </div>
-                <div className="pic-3 pic">
-                  <div className="text-wrapper">
-                    <p className="description">description</p>
-                  </div>
-                </div>
-                <div className="pic-4 pic">
-                  <div className="text-wrapper">
-                    <p className="description">description</p>
-                  </div>
-                </div>
-                <div className="pic-5 pic">
-                  <div className="text-wrapper">
-                    <p className="description">description</p>
-                  </div>
-                </div>
-                <div className="pic-6 pic">
-                  <div className="text-wrapper">
-                    <p className="description">description</p>
-                  </div>
-                </div>
-                <div className="pic-7 pic">
-                  <div className="text-wrapper">
-                    <p className="description">description</p>
-                  </div>
-                </div>
-                <div className="pic-8 pic">
-                  <div className="text-wrapper">
-                    <p className="description">description</p>
-                  </div>
-                </div>
-                <div className="pic-9 pic">
-                  <div className="text-wrapper">
-                    <p className="description">description</p>
-                  </div>
-                </div>
-                <div className="pic-10 pic">
-                  <div className="text-wrapper">
-                    <p className="description">description</p>
-                  </div>
-                </div>
-                <div className="pic-11 pic">
-                  <div className="text-wrapper">
-                    <p className="description">description</p>
-                  </div>
-                </div>
-                <div className="pic-12 pic">
-                  <div className="text-wrapper">
-                    <p className="description">description</p>
-                  </div>
-                </div>
-                <div className="pic-13 pic">
-                  <div className="text-wrapper">
-                    <p className="description">description</p>
-                  </div>
-                </div>
-                <div className="pic-14 pic">
-                  <div className="text-wrapper">
-                    <p className="description">description</p>
-                  </div>
-                </div>
-                <div className="pic-15 pic">
-                  <div className="text-wrapper">
-                    <p className="description">description</p>
-                  </div>
-                </div>
+                  {/* Returns map of 1-15 */}
+                  {Array.apply(null, {length: 15}).map(Function.call, Number).map((r) => {
+                      return(
+                          <Item
+                              name={"pic-"+(r+1)+" pic"}
+                              desc="description"
+                          />
+                      )
+                  })}
               </article>
             </section>
           </div>
