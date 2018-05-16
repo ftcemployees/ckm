@@ -5,11 +5,11 @@ export class Login extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            user_name: '',
+            email: '',
             pwd: '',
             incorrect: false
         }
-        this.handleUserNameInput = this.handleUserNameInput.bind(this);
+        this.handleEmailInput = this.handleEmailInput.bind(this);
         this.handlePwdInput = this.handlePwdInput.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
     }
@@ -30,8 +30,8 @@ export class Login extends React.Component {
         document.title = 'Login';
     }
     
-    handleUserNameInput(e) {
-        this.setState({user_name: e.target.value});
+    handleEmailInput(e) {
+        this.setState({email: e.target.value});
     }
     
     handlePwdInput(e) {
@@ -41,7 +41,7 @@ export class Login extends React.Component {
     async handleLogin(e) {
         e.preventDefault();
         await axios.post('/login', {
-            user_name: this.state.user_name,
+            email: this.state.email,
             pwd: this.state.pwd
           })
           .then(function (response) {
@@ -68,7 +68,7 @@ export class Login extends React.Component {
                 <form className="login-form">
                     <p className="message-two">Login</p>
                     <br />
-                    <input type="text" placeholder="email" onChange={this.handleUserNameInput} value={this.state.user_name} />
+                    <input type="text" placeholder="email" onChange={this.handleEmailInput} value={this.state.email} />
                     <input type="password" placeholder="password" onChange={this.handlePwdInput} value={this.state.pwd} />
                     <button onClick={this.handleLogin}>login</button>
                     <p className="message">Not registered? <a href="/new_user">Create an account</a></p>

@@ -11,9 +11,9 @@ export class Ckm extends React.Component {
         return (
             <Router>
                 <Switch>
+                    <Route path='/new_user' component={NewUser} />
                     <Route path='/login'    component={Login} />
                     <Route path='/'         component={Main} />
-                    <Route path='/new_user' component={NewUser} />
                 </Switch>
             </Router>
         )
