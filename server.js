@@ -3,6 +3,7 @@ const con = require('./model/db_connect');
 const queries = require('./model/queries');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
+var striptags = require('striptags');
 const app = express();
 const saltRounds = 10;
 var user = {};
@@ -32,17 +33,16 @@ app.post('/log_out', (req, res) => {
 })
 
 app.post('/new_user', (req, res) => {
-    const nameFirst = req.body.nameFirst;
-    const nameLast = req.body.nameLast;
-    const email = req.body.email;
-    const pwd = req.body.pwd;
-    console.log(email);
+    const nameFirst = striptags(req.body.nameFirst);
+    const nameLast = striptags(req.body.nameLast);
+    const email = striptags(req.body.email);
+    const pwd = striptags(req.body.pwd);
     bcrypt.hash(pwd, saltRounds, function(err, hash) {
-        console.log(hash);
-        con.query(queries.newUser(email, nameFirst, nameLast, hash), function (error) {
+        con.query(queries.newUser(email, nameFirst, nameLast, hash), function (error, result, field) {
             if (err) throw err;
-            res.sendStatus(200);
-            console.log('New user was created');
+            res.send(nameFirst);
+            user = {name_first: nameFirst};
+            console.log('New user ' + nameFirst + ' was created');
         })
     })
 })
