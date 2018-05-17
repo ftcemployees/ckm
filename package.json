@@ -7,7 +7,8 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "mysql": "^2.15.0",
-    "sql-template-strings": "^2.2.2"
+    "sql-template-strings": "^2.2.2",
+    "striptags": "^3.1.1"
   },
   "author": "FTC",
   "license": "ISC"

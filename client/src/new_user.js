@@ -37,28 +37,29 @@ export class NewUser extends React.Component {
         return !errorMessage
     }
     
-    handleSubmit(e) {
+    async handleSubmit(e) {
         e.preventDefault();
         if (!this.validateForm()) {
-            //return false;
+            return false;
         }
-        if (this.state.errorMessage){
-            console.log('errorrrrr');
-        }
-        axios.post('/new_user', {
+        await axios.post('/new_user', {
             email: this.state.email,
             nameFirst: this.state.nameFirst,
             nameLast: this.state.nameLast,
             pwd: this.state.pwd
         })
         .then((response) => {
-            
+            sessionStorage.setItem("name_first", response.data);
         })
         .catch((error) => {
             if (error)
                 console.log(error);
         })
-       
+        
+        if (sessionStorage.getItem('name_first')) {
+            this.props.history.push('/')
+        }
+        
     }
     
     handleNameFirstInput(e) {
