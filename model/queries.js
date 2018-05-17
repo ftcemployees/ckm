@@ -6,11 +6,13 @@ const newUser = (email, nameFirst, nameLast, pwd) => SQL`
   values
    (${email}, ${nameFirst}, ${nameLast}, ${pwd});`;
 const tag_query = (tag_id) => SQL`SELECT img_path, description, name FROM item WHERE item_id = (SELECT item_id FROM item_tag WHERE tag_id = ${tag_id})`;
+const tag_autofill = (tag_name) => SQL`SELECT name FROM tag WHERE name LIKE '%${tag_name}%'`
 const general_query = (search) => SQL`SELECT img_path, description, name FROM item i WHERE i.description LIKE '%${search}%' OR i.name LIKE '%${search}%'`
 + ` OR (SELECT name FROM tag WHERE tag_id = (SELECT tag_id FROM item_tag WHERE i.item_id = item_id)) LIKE '%${search}%'`;
 const getImages = "select * from users";
 
 exports.login = login;
+exports.tag_autofill = tag_autofill;
 // exports.tag_query = tag_query;
 // exports.general_query= general_query;
 // exports.create_tags = create_tags;
