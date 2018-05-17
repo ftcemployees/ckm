@@ -21,8 +21,18 @@ app.post('/login', function (req, res) {
             bcrypt.compare(pwd, result[0].pwd, function (error, response) {
                 res.send(response ? result[0].name_first : '');
                 user = result[0];
-                console.log(user);  
+                console.log(user);
             })
+        }
+    });
+})
+
+app.get('/search', async (req, res) => {
+    const search = req.body.search;
+    con.query(queries.general_query(search), function (err, result, fields) {
+        if (err) throw err;
+        if (result[0]) {
+            res.send(result)
         }
     });
 })

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Item } from './item';
 
-export const Picture = () => {
+export const Picture = ({match}) => {
     let loginInfo = '';
     if (sessionStorage.getItem('name_first')) {
         loginInfo = <div className="contact-btn"><a href="/login">Log out from {sessionStorage.getItem('name_first')}</a></div>;
@@ -27,10 +27,9 @@ export const Picture = () => {
 
                     <section className="pic_main_section">
                         <article>
-
                             <p className = "arrow1"><a href="">&#8701;</a></p>
 
-                            <img src={'img/2.jpg'} alt="1"/>
+                            <img src={'img/' + match.params.id + '.jpg'} alt="1"/>
                             <p className = "arrow2"><a href="">&#8702;</a></p>
                             <br/>
                             <br/>

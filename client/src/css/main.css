@@ -24,7 +24,7 @@ body{
 }
  .home_page{
      max-width: inherit;
-     padding: 100px;
+     padding: 50px;
 	  background: #A9D0F5;
     /* fallback for old browsers */
      background: -webkit-linear-gradient(top, #A9D0F5, #8DC26F);
@@ -57,6 +57,18 @@ body{
 	 text-decoration: none;
 	 color: #000000;
 }
+
+ .top_menu input {
+     padding: 8px 18px;
+     border: 1px solid #204156;
+     width: 100%;
+     /*position: absolute;*/
+     /*top: 0;*/
+     /*right: 0;*/
+     /*text-decoration: none;*/
+     color: #000000;
+ }
+
  .contact-btn a:hover {
      color: #CEE3F6;
      font-size: 20px;

@@ -1,5 +1,8 @@
 import React from 'react';
 import { Item } from './item';
+import { Gallery } from "./gallery";
+import Autosuggest from 'react-autosuggest';
+import axios from "axios";
 
 export const Main = () => {
     let loginInfo = '';
@@ -8,6 +11,7 @@ export const Main = () => {
     } else {
         loginInfo = <div className="contact-btn"><a href="/login">Login</a></div>;
     }
+
     return (
         <div>
             {loginInfo}
@@ -17,47 +21,9 @@ export const Main = () => {
                     <pre className="tab">P  H  O  T  O  G  R  A  P  H  Y</pre>
                 </header>
                 <nav className="top_menu">
-                    <ul>
-                        <li>HOME</li>
-                        <li>GALLERY</li>
-                        <li>PICTURE</li>
-                    </ul>
+                    <input type="text" placeholder="Search.."/>
                 </nav>
-                <div className="new_div">
-                    <aside className="the_aside">
-                        <h4 className="words">Search</h4>
-                        <input type="text" />
-                        <br />
-                        <br />
-                        <br />
-                        <p className="words">Color</p>
-                        <input type="checkbox" />
-                        <p className="words">Design</p>
-                        <input type="checkbox" />
-                        <p className="words">Author</p>
-                        <input type="checkbox" />
-                        <p className="words">Painting</p>
-                        <input type="checkbox" />
-                        <p className="words">Shape</p>
-                        <input type="checkbox" />
-                        <br />
-                        <br />
-                        <div className="filter-btn"><a>Filter</a></div>
-                    </aside>
-                    <section className="main_section">
-                        <article>
-                            {/* Returns map of 1-15 */}
-                            {Array.apply(null, {length: 15}).map(Function.call, Number).map((r) => {
-                                return(
-                                    <Item
-                                        name={"pic-"+(r+1)+" pic"}
-                                        desc="description"
-                                    />
-                                )
-                            })}
-                        </article>
-                    </section>
-                </div>
+                <Gallery />
                 <footer className="the_footer">
                     © Copyright Lu Yuan Ting 2018
                 </footer>
