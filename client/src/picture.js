@@ -26,6 +26,7 @@ export const Picture = ({match}) => {
                 <div className="new_div">
 
                     <section className="pic_main_section">
+                        <p className ="picName">The name of picture</p><br/>
                         <article>
                             <p className = "arrow1"><a href="">&#8701;</a></p>
 
@@ -34,7 +35,7 @@ export const Picture = ({match}) => {
                             <br/>
                             <br/>
                             <br/>
-                            <p className ="picName">The name of picture</p>
+
                             <br/>
                             <p className ="picDescription"> Wind in a Box
                                 BY TERRANCE HAYES

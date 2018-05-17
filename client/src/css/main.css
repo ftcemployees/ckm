@@ -75,6 +75,7 @@ body{
      border: 1px solid #CEE3F6;
      cursor: pointer;
      transition: all 0.3s ease-in-out;
+
 }
  .filter-btn {
      float: left;
@@ -356,11 +357,13 @@ body{
      padding-top: 30px;
      text-decoration: none;
      float: left;
+     margin-top: 340px;
 
  }
 .arrow1 a{
     color: #04B4AE;
     text-decoration: none;
+
 
 }
 .arrow2{
@@ -371,6 +374,7 @@ body{
     padding-top: 30px;
     text-decoration: none;
     float: right;
+    margin-top: 340px;
 }
 .arrow2 a{
     color: #04B4AE;
