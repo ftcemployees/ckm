@@ -1,8 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 @import url('https://fonts.googleapis.com/css?family=Alex+Brush');
  *{
-     margin: 0px;
-     padding: 0px;
+     margin: 0;
+     padding: 0;
 }
  h1{
      font: 80px Alex brush;
@@ -20,7 +20,7 @@
      display: block;
 }
 body{
-    background: -webkit-radial-gradient(center, circle, #A9D0F5, #FFFFFF);
+    background: -webkit-radial-gradient(circle, #A9D0F5, #FFFFFF);
 }
  .home_page{
      max-width: inherit;
@@ -59,7 +59,7 @@ body{
 }
  .contact-btn a:hover {
      color: #CEE3F6;
-     font: 20px;
+     font-size: 20px;
      border: 1px solid #CEE3F6;
      cursor: pointer;
      transition: all 0.3s ease-in-out;
@@ -77,10 +77,9 @@ body{
 }
  .filter-btn a:hover {
      color: #04B4AE;
-     font: 20px;
+     font-size: 20px;
      border: 1px solid #CEE3F6;
      cursor: pointer;
-    cursor: pointer;
      transition: all 0.5s ease-in-out;
 }
  .top_menu{
@@ -110,12 +109,12 @@ body{
      -webkit-box-orient:horizontal;
 }
  .main_section{
-     -webkit-box-flex: 1;
+     display: -webkit-box;
      margin: auto;
      text-align: center;
 }
  .the_aside{
-     width: 80px;
+     width: 100px;
      margin-bottom:50px;
      font: 14px Roboto;
 }
@@ -127,7 +126,7 @@ body{
      padding: 30px;
      margin-top: 50px;
      border-top: 2px solid #04B4AE;
-     color: #b3b3b3 
+     color: #b3b3b3;
 }
  .picture{
      margin-right: 10px;
@@ -259,8 +258,8 @@ body{
      padding: 15px;
      color: #FFFFFF;
      font-size: 14px;
-     -webkit-transition: all 0.3 ease;
-     transition: all 0.3 ease;
+     /*-webkit-transition: all 0.3 ease;*/
+     transition: all 0.3s ease;
      cursor: pointer;
 }
  .form button:hover,.form button:active,.form button:focus {
@@ -322,7 +321,8 @@ body{
  body {
     /*background: #A9D0F5;
     /* fallback for old browsers */
-     background: -webkit-radial-gradient(center, circle, #A9D0F5, #FFFFFF);
+     /*background: -webkit-radial-gradient(center, circle, #A9D0F5, #FFFFFF);*/
+     background: -webkit-radial-gradient(circle, #A9D0F5, #FFFFFF);
     /*background: -moz-linear-gradient(right, #A9D0F5, #8DC26F);
      background: -o-linear-gradient(right, #ffffff, #8DC26F);
      background: linear-gradient(to left, #A9D0F5, #8DC26F);
@@ -331,9 +331,59 @@ body{
      -moz-osx-font-smoothing: grayscale;
     8*/
 }
- .incorrect {
+.incorrect {
      margin: 15px 0 0;
      color: red;
      font-size: 12px;
 }
- 
+ .arrow1{
+     color: #04B4AE;
+     font-size:50px;
+     display: inline-block;
+     margin: 10px;
+     padding-top: 30px;
+     text-decoration: none;
+     float: left;
+
+ }
+.arrow1 a{
+    color: #04B4AE;
+    text-decoration: none;
+
+}
+.arrow2{
+    color: #04B4AE;
+    font-size:50px;
+    display: inline-block;
+    margin: 10px;
+    padding-top: 30px;
+    text-decoration: none;
+    float: right;
+}
+.arrow2 a{
+    color: #04B4AE;
+    text-decoration: none;
+
+}
+.picName{
+    font: 50px Alex brush;
+}
+.picDescription{
+    display:inline-block;
+    font-family: "Roboto", sans-serif;
+    position: relative;
+    color: #000000;
+    max-width: 800px;
+}
+
+.pic_main_section{
+
+    width: 1800px;
+    margin: auto;
+    border: 1px solid red;
+    text-align: center;
+}
+img{
+    width: 100%;
+    max-width: 1200px;
+}

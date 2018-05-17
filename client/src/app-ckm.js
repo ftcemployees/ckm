@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Login } from './login';
 import { Main } from './home';
 import { NewUser } from './new_user';
+import { Picture } from './picture';
 
 
 
@@ -11,9 +12,10 @@ export class Ckm extends React.Component {
         return (
             <Router>
                 <Switch>
-                    <Route path='/new_user' component={NewUser} />
+                    <Route path='/picture'  component={Picture} />
                     <Route path='/login'    component={Login} />
                     <Route path='/'         component={Main} />
+                    <Route path='/new_user' component={NewUser} />
                 </Switch>
             </Router>
         )
