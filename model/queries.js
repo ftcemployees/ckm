@@ -1,5 +1,10 @@
 const SQL = require('sql-template-strings');
-const login = (username, pwd) => SQL`SELECT id, name_first FROM users where user_name = ${username} and pwd = ${pwd}`;
+const login = (email) => SQL`SELECT id, name_first, pwd FROM users where email = ${email}`;
+const newUser = (email, nameFirst, nameLast, pwd) => SQL`
+  insert into users
+   (email, name_first, name_last, pwd)
+  values
+   (${email}, ${nameFirst}, ${nameLast}, ${pwd});`;
 const tag_query = (tag_id) => SQL`SELECT img_path, description, name FROM item WHERE item_id = (SELECT item_id FROM item_tag WHERE tag_id = ${tag_id})`;
 const general_query = (search) => SQL`SELECT img_path, description, name FROM item i WHERE i.description LIKE '%${search}%' OR i.name LIKE '%${search}%'`
 + ` OR (SELECT name FROM tag WHERE tag_id = (SELECT tag_id FROM item_tag WHERE i.item_id = item_id)) LIKE '%${search}%'`;
@@ -9,6 +14,7 @@ exports.login = login;
 exports.tag_query = tag_query;
 exports.general_query= general_query;
 exports.getImages = getImages;
+exports.newUser = newUser;
 
 // Potential outline for user, item, tag, and item_tag tables
 //
