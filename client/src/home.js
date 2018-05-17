@@ -1,8 +1,5 @@
 import React from 'react';
-import { Item } from './item';
 import { Gallery } from "./gallery";
-import Autosuggest from 'react-autosuggest';
-import axios from "axios";
 
 export const Main = () => {
     let loginInfo = '';
