@@ -20,7 +20,6 @@ export class Gallery extends React.Component {
         var self = this;
         Axios.get('/search')
         .then(function (response) {
-            console.log(response.data);
             self.setState({data: response.data});
         })
         .catch(function (error) {

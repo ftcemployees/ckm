@@ -18,6 +18,11 @@ export const Main = () => {
                     <pre className="tab">P  H  O  T  O  G  R  A  P  H  Y</pre>
                 </header>
                 <nav className="top_menu">
+                    {/*<ul>*/}
+                        {/*<li>HOME</li>*/}
+                        {/*<li>GALLERY</li>*/}
+                        {/*<li>PICTURE</li>*/}
+                    {/*</ul>*/}
                     <input type="text" placeholder="Search.."/>
                 </nav>
                 <Gallery />

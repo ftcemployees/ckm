@@ -12,10 +12,10 @@ export class Ckm extends React.Component {
         return (
             <Router>
                 <Switch>
-                    <Route path='/:id'          component={Picture} />
                     <Route path='/login'        component={Login} />
-                    <Route path='/'             component={Main} />
                     <Route path='/new_user'     component={NewUser} />
+                    <Route path='/'             component={Main} />
+                    <Route path='/:id'          component={Picture} />
                 </Switch>
             </Router>
         )
