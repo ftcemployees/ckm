@@ -18,7 +18,7 @@ const customStyles = {
 };
 
 // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement('#root')
+Modal.setAppElement('#root');
 
 export class Gallery extends React.Component {
     constructor(props) {
@@ -57,7 +57,7 @@ export class Gallery extends React.Component {
     }
 
     async loadPhotos() {
-        var self = this;
+        let self = this;
         Axios.get('/search')
         .then(function (response) {
             self.setState({data: response.data});
