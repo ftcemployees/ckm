@@ -1,4 +1,5 @@
 import React from 'react';
+import { SearchComponent } from "./search";
 
 export class Header extends React.Component {
     render () {
@@ -10,7 +11,17 @@ export class Header extends React.Component {
         }
 
         return (
-            <div>{loginInfo}</div>
+            <div>
+                <div className="header">
+                    {/*<input type="text" placeholder="Search.."/>*/}
+                    <SearchComponent/>
+                    {loginInfo}
+                </div>
+                <header className="top_header" >
+                    <h1>C K M</h1>
+                    <pre className="tab">P  H  O  T  O  G  R  A  P  H  Y</pre>
+                </header>
+            </div>
         );
     }
 }

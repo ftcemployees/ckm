@@ -1,24 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 import { Item } from './item';
-import Modal from 'react-modal';
-
-const customStyles = {
-    content : {
-        top                   : '50%',
-        left                  : '50%',
-        right                 : 'auto',
-        bottom                : 'auto',
-        marginRight           : '-50%',
-        maxWidth              : '50%',
-        maxHeight             : '90%',
-        width                 : '50%',
-        transform             : 'translate(-50%, -50%)'
-    }
-};
-
-// Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement('#root');
+import { PictureModal } from './picture-modal';
 
 export class Gallery extends React.Component {
     constructor(props) {
@@ -39,18 +22,9 @@ export class Gallery extends React.Component {
         this.prevPic = this.prevPic.bind(this);
     }
 
-    openModal() {
-        this.setState({modalIsOpen: true});
-    }
-
-    afterOpenModal() {
-        // references are now sync'd and can be accessed.
-        // this.subtitle.style.color = '#f00';
-    }
-
-    closeModal() {
-        this.setState({modalIsOpen: false});
-    }
+    openModal()         { this.setState({modalIsOpen: true}); }
+    afterOpenModal()    { }
+    closeModal()        { this.setState({modalIsOpen: false}); }
 
     componentWillMount() {
         this.loadPhotos();
@@ -78,7 +52,7 @@ export class Gallery extends React.Component {
     }
 
     nextPic() {
-        let index = this.state.picIndex < this.state.data.length - 1 ? this.state.picIndex + 1 : index = 0;
+        let index = this.state.picIndex < this.state.data.length - 1 ? this.state.picIndex + 1 : 0;
         console.log(index + " " + this.state.data[index]);
         this.setState({
             picIndex: index,
@@ -108,30 +82,15 @@ export class Gallery extends React.Component {
                     })}
                 </section>
                 <div>
-                    <Modal
-                        isOpen={this.state.modalIsOpen}
-                        onAfterOpen={this.afterOpenModal}
-                        onRequestClose={this.closeModal}
-                        style={customStyles}
-                        contentLabel="Example Modal"
-                    >
-                        <section className="pic_main_section">
-                            <p className="picName">The name of picture</p>
-
-                            <div>
-                                <i className="left" onClick={()=>this.prevPic()}></i>
-
-                                <img  className="picView" src={'img/' + this.state.picView.id + '.jpg'} alt="1"/>
-
-                                <i className="right" onClick={()=>this.nextPic()}></i>
-                            </div>
-
-                            <br/>
-                            <p className="picDescription">
-                                Description
-                            </p>
-                        </section>
-                    </Modal>
+                    <PictureModal
+                        modalIsOpen = {this.state.modalIsOpen}
+                        picView = {this.state.picView}
+                        nextPic={() => this.nextPic()}
+                        prevPic={() => this.prevPic()}
+                        openModal={() => this.openModal()}
+                        afterOpenModal={() => this.afterOpenModal()}
+                        closeModal={() => this.closeModal()}
+                    />
                 </div>
             </div>
         );

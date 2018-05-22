@@ -3,10 +3,10 @@ const con = require('./model/db_connect');
 const queries = require('./model/queries');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
-var striptags = require('striptags');
+let striptags = require('striptags');
 const app = express();
 const saltRounds = 10;
-var user = {};
+let user = {};
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -25,7 +25,7 @@ app.post('/login', function (req, res) {
             })
         }
     });
-})
+});
 
 app.get('/search', async (req, res) => {
     const search = req.body.search;
@@ -35,12 +35,23 @@ app.get('/search', async (req, res) => {
             res.send(result)
         }
     });
-})
+});
+
+app.get('/tag_suggestion',  (req, res) => {
+    const search = req.body.search
+    con.query(queries.tag_suggestion(search), function (err, result, fields) {
+        console.log(result)
+        if (err) throw err;
+        if (result[0]) {
+            res.send(result)
+        }
+    });
+});
 
 app.post('/log_out', (req, res) => {
     user = {};
     res.sendStatus(200);
-})
+});
 
 app.post('/new_user', (req, res) => {
     const nameFirst = striptags(req.body.nameFirst);
@@ -59,4 +70,4 @@ app.post('/new_user', (req, res) => {
 
 server = app.listen(5000, () => {
     console.log('Server is listening on port: ', server.address().port);
-})
+});

@@ -35,27 +35,61 @@ body{
      -webkit-font-smoothing: antialiased;
      -moz-osx-font-smoothing: grayscale;
 }
+
+ /*
+ * Headers
+  */
+ div.header {
+     top: 20px;
+     right: 30px;
+     float: right;
+     position: absolute;
+     font-family: "Roboto", sans-serif;
+ }
  .top_header{
-     margin: 50px;
+     margin: auto;
+     padding: 50px 0;
+     /*width: 50%;*/
+     width: fit-content;
      text-align: center;
 }
  .tab{
      font-family: "Roboto", sans-serif;
 }
  .contact-btn {
-     font-family: "Roboto", sans-serif;
-     float: right;
+     /*float: right;*/
+     float:left;
+     display:inline;
+     font-size: 18px;
+}
+
+.contact-btn a:hover {
+    color: #CEE3F6;
+    font-size: 18px;
+    border: 1px solid #CEE3F6;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
 }
  .contact-btn a {
-     margin-right: 10px;
-     margin-top: 10px;
      padding: 8px 18px;
      border: 1px solid #204156;
-     position: absolute;
-     top: 0;
-     right: 0;
-	 text-decoration: none;
-	 color: #000000;
+     position: relative;
+     top: 10px;
+     text-decoration: none;
+     color: #000000;
+}
+input[type="text"] {
+    float:left;
+    display:inline;
+    margin-right: 10px;
+    padding: 10px 10px;
+    border: 1px solid #204156;
+    position: relative;
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+    color: #000000;
 }
 
  .top_menu input {
@@ -69,14 +103,6 @@ body{
      color: #000000;
  }
 
- .contact-btn a:hover {
-     color: #CEE3F6;
-     font-size: 20px;
-     border: 1px solid #CEE3F6;
-     cursor: pointer;
-     transition: all 0.3s ease-in-out;
-
-}
  .filter-btn {
      float: left;
      font-size: 15px;
@@ -224,10 +250,6 @@ body{
      padding-top: 120px;
      opacity: 1;
      transition: all 0.5s ease-in-out;
-}
- input[type="text"] {
-     height: 15px;
-     width: 80px;
 }
  .login-page {
      width: 360px;
@@ -386,21 +408,23 @@ body{
     padding-top: 8px;
 }
 .picDescription{
-    display: inline-block;
+    display: block;
+    text-align: center;
     font-family: "Roboto", sans-serif;
     position: relative;
     color: #000000;
     max-width: 50%;
+    margin: 0 auto;
 }
 
 .pic_main_section{
     max-width: 100%;
-    max-height: 80%;
+    height: 100%;
     position: relative;
-    margin: auto;
-    border: 1px solid lightgray;
-    /*border: 1px solid black;*/
+    border: 1px solid black;
     text-align: center;
+    overflow: hidden;
+    display: block;
 }
 
 .picView{
@@ -408,8 +432,16 @@ body{
     display: inline-block;
     background-size: cover;
     max-width: 90%;
+    max-height:100%;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-    overflow: hidden;
+    /*overflow: hidden;*/
+}
+
+.picFrame{
+    /*position: relative;*/
+    height: 100%;
+    /*box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);*/
+    /*overflow: hidden;*/
 }
 
 i {
@@ -421,6 +453,11 @@ i {
     position: absolute;
     top: 50%;
     transform: translate(-50%, 0%);
+}
+
+.modal_content {
+    max-height:100%;
+    overflow-y: scroll;
 }
 
 .right {
@@ -440,5 +477,73 @@ i {
     -webkit-transform-origin: 0 0; /* Safari 3-8 */
     transform: rotate(135deg);
     transform-origin: 0 0;
-    left: 5%;
+    left: 3.5%;
+}
+
+
+
+
+
+.react-autosuggest__container {
+    position: relative;
+    float:left;
+    display:inline;
+    margin-right: 10px;
+    /*padding: 10px 10px;*/
+}
+
+.react-autosuggest__input {
+    width: 240px;
+    height: 30px;
+    padding: 10px 20px;
+    font-family: Helvetica, sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+}
+
+.react-autosuggest__input--focused {
+    outline: none;
+}
+
+.react-autosuggest__input--open {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.react-autosuggest__suggestions-container {
+    display: none;
+}
+
+.react-autosuggest__suggestions-container--open {
+    display: block;
+    position: absolute;
+    top: 51px;
+    width: 280px;
+    border: 1px solid #aaa;
+    background-color: #fff;
+    font-family: Helvetica, sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    max-height: 175px;
+    overflow-y: auto;
+    z-index: 2;
+}
+
+.react-autosuggest__suggestions-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.react-autosuggest__suggestion {
+    cursor: pointer;
+    padding: 10px 20px;
+}
+
+.react-autosuggest__suggestion--highlighted {
+    background-color: #ddd;
 }
