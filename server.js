@@ -38,6 +38,8 @@ app.get('/search', async (req, res) => {
         if (err) throw err;
         if (result[0]) {
             res.send(result)
+        } else {
+            res.send('');
         }
     });
 });
@@ -49,6 +51,8 @@ app.get('/tag_suggestion',  (req, res) => {
         if (err) throw err;
         if (result[0]) {
             res.send(result)
+        } else {
+            res.send('');
         }
     });
 });
