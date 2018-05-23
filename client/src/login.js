@@ -16,7 +16,7 @@ export class Login extends React.Component {
     
     componentWillMount() {
         if (sessionStorage.getItem('name_first')){
-            sessionStorage.setItem('name_first', '');
+            sessionStorage.removeItem('name_first');
             axios.post('/log_out')
             .catch(function(error) {
                 if (error)
@@ -54,7 +54,7 @@ export class Login extends React.Component {
             console.log(error);
           });
         
-        if (sessionStorage.getItem('name_first')) {
+        if (sessionStorage['name_first']) {
             this.props.history.push('/')
         } else {
             this.setState({incorrect: true});

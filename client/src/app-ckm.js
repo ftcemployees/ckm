@@ -14,8 +14,8 @@ export class Ckm extends React.Component {
                 <Switch>
                     <Route path='/picture'  component={Picture} />
                     <Route path='/login'    component={Login} />
-                    <Route path='/'         component={Main} />
                     <Route path='/new_user' component={NewUser} />
+                    <Route path='/'         component={Main} />
                 </Switch>
             </Router>
         )

@@ -40,7 +40,7 @@ export class NewUser extends React.Component {
     async handleSubmit(e) {
         e.preventDefault();
         if (!this.validateForm()) {
-            return false;
+            //return false;
         }
         await axios.post('/new_user', {
             email: this.state.email,
@@ -49,7 +49,12 @@ export class NewUser extends React.Component {
             pwd: this.state.pwd
         })
         .then((response) => {
-            sessionStorage.setItem("name_first", response.data);
+            if (!response.data.error){
+                sessionStorage.setItem("name_first", response.data.nameFirst);
+            } else {
+                this.setState({errorMessage: response.data.error});
+                return;
+            }
         })
         .catch((error) => {
             if (error)
