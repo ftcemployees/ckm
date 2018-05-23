@@ -20,18 +20,44 @@ app.post('/login', function (req, res) {
         if (err) throw err;
         if (result[0]) {
             req.session.nameFirst = result[0].name_first;
+            bcrypt.compare(pwd, result[0].pwd, function (error, response) {
+                res.send(response ? result[0].name_first : '');
+                user = result[0];
+                console.log(user);
+            })
         }
         bcrypt.compare(pwd, result[0].pwd, function (error, response) {
             res.send(response ? result[0].name_first : '');
             console.log(req.session);
         })
     });
-})
+});
+
+app.get('/search', async (req, res) => {
+    const search = req.body.search;
+    con.query(queries.general_query(search), function (err, result, fields) {
+        if (err) throw err;
+        if (result[0]) {
+            res.send(result)
+        }
+    });
+});
+
+app.get('/tag_suggestion',  (req, res) => {
+    const search = req.body.search
+    con.query(queries.tag_suggestion(search), function (err, result, fields) {
+        console.log(result)
+        if (err) throw err;
+        if (result[0]) {
+            res.send(result)
+        }
+    });
+});
 
 app.post('/log_out', (req, res) => {
     req.session.destroy();
     res.sendStatus(200);
-})
+});
 
 app.post('/new_user', (req, res) => {
     const nameFirst = striptags(req.body.nameFirst);
@@ -79,4 +105,4 @@ app.post('/new_user', (req, res) => {
 
 server = app.listen(5000, () => {
     console.log('Server is listening on port: ', server.address().port);
-})
+});

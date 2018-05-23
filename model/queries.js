@@ -5,16 +5,30 @@ const newUser = (email, nameFirst, nameLast, pwd) => SQL`
    (email, name_first, name_last, pwd)
   values
    (${email}, ${nameFirst}, ${nameLast}, ${pwd});`;
-const tag_query = (tag_id) => SQL`SELECT img_path, description, name FROM item WHERE item_id = (SELECT item_id FROM item_tag WHERE tag_id = ${tag_id})`;
-const tag_autofill = (tag_name) => SQL`SELECT name FROM tag WHERE name LIKE '%${tag_name}%'`
-const general_query = (search) => SQL`SELECT img_path, description, name FROM item i WHERE i.description LIKE '%${search}%' OR i.name LIKE '%${search}%'`
-+ ` OR (SELECT name FROM tag WHERE tag_id = (SELECT tag_id FROM item_tag WHERE i.item_id = item_id)) LIKE '%${search}%'`;
+// const tag_query = (tag_id) => SQL`SELECT img_path, description, name FROM item WHERE item_id = (SELECT item_id FROM item_tag WHERE tag_id = ${tag_id})`;
+const tag_autofill = (tag_name) => SQL`SELECT name FROM tag WHERE name LIKE '%${tag_name}%'`;
+// const general_query = (search) => SQL`
+// SELECT * FROM item
+// WHERE category LIKE '%${search}%'
+// OR gender LIKE '%${search}%'
+// OR item LIKE '%${search}%'
+// OR style LIKE '%${search}%'
+// OR era LIKE '%${search}%'
+// OR description LIKE '%${search}%'
+// OR branding LIKE '%${search}%'
+// OR measurement LIKE '%${search}%'
+// OR history LIKE '%${search}%' LIMIT 15`;
+const general_query = () => SQL`
+SELECT * FROM item LIMIT 15`;
+const tag_suggestion = () => SQL`
+SELECT * FROM tag`;
 const getImages = "select * from users";
 
 exports.login = login;
 exports.tag_autofill = tag_autofill;
 // exports.tag_query = tag_query;
-// exports.general_query= general_query;
+exports.general_query = general_query;
+exports.tag_suggestion = tag_suggestion;
 // exports.create_tags = create_tags;
 exports.getImages = getImages;
 exports.newUser = newUser;
