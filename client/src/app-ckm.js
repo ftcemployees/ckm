@@ -9,7 +9,7 @@ export class Ckm extends React.Component {
         return (
             <Router>
                 <Switch>
-                    <Route path='/picture'  component={Picture} />
+                    {/*Route path='/picture'  component={Picture} />*/}
                     <Route path='/login'    component={Login} />
                     <Route path='/new_user' component={NewUser} />
                     <Route path='/'         component={Main} />

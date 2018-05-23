@@ -40,23 +40,6 @@ create table tag (
   constraint pk_tag primary key(id)
 );
 
-insert into users
-   (email, name_first, name_last, pwd)
-  values
-   ('1993alexey@gmail.com', 'Alex', 'Shnyrov', 'oceansid');
-insert into users
-   (email, name_first, name_last, pwd)
-  values
-   ('connor@gmail.com', 'Connor', 'Spratling', 'oceansid');
-insert into users
-   (email, name_first, name_last, pwd)
-  values
-   ('lu@gmail.com', 'Lu', 'Lulu', 'oceansid');
-insert into users
-   (email, name_first, name_last, pwd)
-  values
-   ('brain@gmail.com', 'Brain', 'Brainovich', 'oceansid');
-
 --DELETE FROM tag;
 --ALTER TABLE tag AUTO_INCREMENT = 1;
 --INSERT INTO tag (name) SELECT * FROM (SELECT distinct LOWER(SUBSTRING_INDEX( SUBSTRING_INDEX( item, ' ', l10.n * 10 + l1.n + 1), ' ', -1)) AS item

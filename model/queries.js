@@ -18,10 +18,8 @@ const tag_autofill = (tag_name) => SQL`SELECT name FROM tag WHERE name LIKE '%${
 // OR branding LIKE '%${search}%'
 // OR measurement LIKE '%${search}%'
 // OR history LIKE '%${search}%' LIMIT 15`;
-const general_query = () => SQL`
-SELECT * FROM item LIMIT 15`;
-const tag_suggestion = () => SQL`
-SELECT * FROM tag`;
+const general_query = () => SQL`SELECT * FROM item LIMIT 15`;
+const tag_suggestion = () => SQL`SELECT * FROM tag`;
 const getImages = "select * from users";
 
 exports.login = login;

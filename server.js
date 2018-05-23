@@ -19,17 +19,16 @@ app.post('/login', function (req, res) {
     con.query(queries.login(email), function (err, result, fields) {
         if (err) throw err;
         if (result[0]) {
-            req.session.nameFirst = result[0].name_first;
             bcrypt.compare(pwd, result[0].pwd, function (error, response) {
-                res.send(response ? result[0].name_first : '');
-                user = result[0];
-                console.log(user);
+                if (response) {
+                    req.session.nameFirst = result[0].name_first;
+                    res.send(result[0].name_first);
+                    console.log(req.session);
+                }
             })
+        } else {
+            res.send('');
         }
-        bcrypt.compare(pwd, result[0].pwd, function (error, response) {
-            res.send(response ? result[0].name_first : '');
-            console.log(req.session);
-        })
     });
 });
 

@@ -23,14 +23,14 @@ export class NewUser extends React.Component {
     
     validateForm() {
         let errorMessage = '';
-        if (this.state.pwd !== this.state.pwdRepeat) {
+        if (this.state.nameFirst.length < 1 || this.state.nameLast.length < 1) {
+            errorMessage = 'Empty fields are not allowed';
+        } else if (!EmailValidator.validate(this.state.email)) {
+            errorMessage = 'Please enter a valid email';
+        } else if (this.state.pwd !== this.state.pwdRepeat) {
             errorMessage = 'Passwords must be the same';  
         } else if (this.state.pwd.length < 6) {
             errorMessage = 'Password must be at least 6 characters long';
-        } else if (!EmailValidator.validate(this.state.email)) {
-            errorMessage = 'Please enter a valid email';
-        } else if (this.state.nameFirst.length < 1 || this.state.nameLast.length < 1) {
-            errorMessage = 'Empty fields are not allowed';
         }
         this.setState({errorMessage: errorMessage});
         console.log(this.state.errorMessage);
@@ -40,7 +40,7 @@ export class NewUser extends React.Component {
     async handleSubmit(e) {
         e.preventDefault();
         if (!this.validateForm()) {
-            //return false;
+            return false;
         }
         await axios.post('/new_user', {
             email: this.state.email,
