@@ -34,7 +34,7 @@ export class PictureModal extends React.Component {
                 <section className="pic_main_section">
                     <i className="left" onClick={()=>this.props.prevPic()}></i>
                     <div className="modal_content">
-                        <p className="picName">{this.props.picView.item}</p>
+                        <p className="picName">{this.props.picView.id}</p>
 
                         <div className="picFrame">
 

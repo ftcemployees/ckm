@@ -17,7 +17,6 @@ function getSuggestions(value) {
     }
 
     const regex = new RegExp('^' + escapedValue, 'i');
-
     return tags.data.filter(tag => regex.test(tag.name));
 }
 
@@ -50,11 +49,14 @@ export class SearchComponent extends React.Component {
     async loadTags() {
         Axios.get('/tag_suggestion')
             .then(function (response) {
-                tags = {data: response.data};
+                if (response.data.length > 0)
+                    tags = {data: response.data};
+                else
+                    tags = {data: [{name: 'beaded'},{name: 'bell'},{name: 'black'},{name: 'boiled'}]}
             })
             .catch(function (error) {
-                const dataTemp = {data: [{name: 'beaded'},{name: 'bell'},{name: 'black'},{name: 'boiled'}]};
-                tags = [{data: dataTemp}];
+                const dataTemp = [{name: 'beaded'},{name: 'bell'},{name: 'black'},{name: 'boiled'}];
+                tags = {data: dataTemp};
                 console.log(error);
             });
     }
@@ -80,7 +82,7 @@ export class SearchComponent extends React.Component {
     render() {
         const { value, suggestions } = this.state;
         const inputProps = {
-            placeholder: "Search..",
+            placeholder: "Search.. (type b)",
             value,
             onChange: this.onChange
         };
