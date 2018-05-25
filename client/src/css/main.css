@@ -547,3 +547,12 @@ i {
 .react-autosuggest__suggestion--highlighted {
     background-color: #ddd;
 }
+
+.divBox{
+    margin: auto;
+    width: 700px;
+    height: 900px;
+    background-color: white;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+    border: 1px;
+}
