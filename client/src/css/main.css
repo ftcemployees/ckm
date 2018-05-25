@@ -556,3 +556,34 @@ i {
     box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
     border: 1px;
 }
+
+.img-upload {
+    margin: 5px
+}
+
+label.upload-lable input[type="file"] {
+    position:absolute;
+    top: -1000px;
+}
+
+/***** Example custom styling *****/
+.upload-lable {
+    border: 2px solid #AAA;
+    border-radius: 4px;
+    padding: 2px 5px;
+    margin: 2px;
+    background: #DDD;
+    display: inline-block;
+}
+.upload-lable:hover {
+    background: #CCC;
+}
+.upload-lable:active {
+    background: #CCF;
+}
+.upload-lable :invalid + span {
+    color: #A44;
+}
+.upload-lable :valid + span {
+    color: #4A4;
+}

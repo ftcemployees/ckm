@@ -1,42 +1,52 @@
 import React from 'react';
 import ImageUploader from 'react-images-upload';
 
+function createImage(src, width, height, alt, id, className, appendMethod) {
+    let newImg = document.createElement('IMG');
+    newImg.setAttribute('src', src);
+    newImg.setAttribute('id', id);
+    newImg.setAttribute('class', className);
+    newImg.setAttribute('width', width);
+    newImg.setAttribute('height', height);
+    newImg.setAttribute('alt', alt);
+    appendMethod.appendChild(newImg);
+}
+
 export class NewItem extends React.Component{
     constructor(props){
         super(props);
-        this.state = { picture1: '',
-                        picture2: ''};
         this.handleImageSelect = this.handleImageSelect.bind(this);
 
     }
 
-    handleImageSelect(e) {
-        var preview1 = document.querySelector('#asd'); //selects the query named img
-        var preview3 = document.getElementsByName('#asd3'); //selects the query named img
-        var file    = document.querySelector('input[type=file]').files; //sames as here
-        var reader  = new FileReader();
+    handleImageSelect(input) {
+        if (input.target.files){
+            const imgContainer = document.getElementById('imgContainer');
+            // remove all uploaded pictures
+            while (imgContainer.firstChild) {
+                imgContainer.removeChild(imgContainer.firstChild);
+            }
+            for (let i = 0; i < input.target.files.length; i++){
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    createImage(e.target.result, 220, 230, 'Picture ', 'img-' + i, 'img-upload', imgContainer);
+                }
+                reader.readAsDataURL(input.target.files[i]);
 
-        reader.onloadend = function () {
-            preview1.src =  reader.result;
-            preview1.src = reader.result;
-        }
-
-        if (file) {
-            console.log(file[0]);
-            reader.readAsDataURL(file[0]); //reads the data as a URL
-        } else {
-            preview1.src = "";
+            }
         }
     }
 
     render() {
         return (
             <div>
-                <input type="file" onChange={this.handleImageSelect} multiple/><br />
+                <label class="upload-lable">
+                    <input type="file" onChange={this.handleImageSelect} accept="image/*" multiple /><br />
+                    <span>Cool Lable</span>
+                </label>
+                <div className="divBox" id="imgContainer">
 
-                <div class="divBox">
-                    <img id="asd" src={this.state.picture1} height="200" alt="Image preview..." />
-                    <img id="asd3" src={this.state.picture2} height="200" alt="Image preview..." />
+
                 </div>
             </div>
         )
