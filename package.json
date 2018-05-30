@@ -10,8 +10,11 @@
     "express-validator": "^5.2.0",
     "mysql": "^2.15.0",
     "promise-mysql": "^3.2.1",
+    "react-bootstrap": "^0.32.1",
+    "react-overlays": "^0.8.3",
     "sql-template-strings": "^2.2.2",
     "striptags": "^3.1.1",
+    "webfontloader": "^1.6.28",
     "yarn": "^1.6.0"
   },
   "author": "FTC",
