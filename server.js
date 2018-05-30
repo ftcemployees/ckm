@@ -7,6 +7,8 @@ const striptags = require('striptags');
 const expressSessions = require('express-session');
 const app = express();
 const saltRounds = 10;
+var multer  = require('multer');
+var upload = multer({ dest: 'uploads/' });
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -56,6 +58,10 @@ app.get('/tag_suggestion',  (req, res) => {
         }
     });
 });
+
+app.post('/new-item', upload.array('files'), (req, res) => {
+    console.log(req.files);
+})
 
 app.post('/log_out', (req, res) => {
     req.session.destroy();
