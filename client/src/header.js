@@ -12,7 +12,8 @@ export class Header extends React.Component {
 
         return (
             <div className="header">
-                <a href="./" className="header-logo">CKM</a>
+                <a href="./"><img src={require("./img/Logo.png")} className="logo" alt="Logo"/></a>
+                <a href="./" className="header-logo">Copper King Mansion Historic Clothing</a>
                 <div className="search-box">
                     <SearchComponent/>
                 </div>

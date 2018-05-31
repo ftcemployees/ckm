@@ -81,6 +81,18 @@ export class Gallery extends React.Component {
         return (
             <div className="gallery">
                 <div className="toolbar">
+                    <div className="sort_buttons">
+                        <button>&#8592;1890's</button>
+                        <button>1900's</button>
+                        <button>1910's</button>
+                        <button>1920's</button>
+                        <button>1930's</button>
+                        <button>1940's</button>
+                        <button>1950's</button>
+                        <button>1960's</button>
+                        <button>1970's</button>
+                        <button>1980's&#8594;</button>
+                    </div>
                     <input type="range" min="100" max="500" defaultValue={this.state.size} onChange={this.handleChange} className="slider" id="myRange"/>
                 </div>
                 <div className="images">

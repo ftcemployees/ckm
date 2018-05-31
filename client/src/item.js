@@ -17,7 +17,7 @@ export class Item extends React.Component {
         return (
             <div style={styles.container} className={"pic-"+this.props.item.id+" pic"} onClick={this.props.onClick}>
                 <div className="text-wrapper">
-                    <p className="description">{this.props.item.id}</p>
+                    <p style={styles.container} className="description">{this.props.item.id}</p>
                 </div>
             </div>
         );
