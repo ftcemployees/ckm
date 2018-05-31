@@ -76,7 +76,7 @@ body{
 }
 
 .logo {
-    background-image: url("../img/Logo.png");
+    background-image: url("../img/logo.png");
     height: 100%;
     width: content-box;
 }
