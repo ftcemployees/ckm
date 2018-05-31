@@ -11,15 +11,12 @@ export class Header extends React.Component {
         }
 
         return (
-            <div className="global-nav-container">
-                <div className="ckm-logo-container">
-                    CKM
-                </div>
-                <div className="global-nav-tools">
-                    {/*<input type="text" placeholder="Search.."/>*/}
+            <div className="header">
+                <a href="./" className="header-logo">CKM</a>
+                <div className="search-box">
                     <SearchComponent/>
-                    {loginInfo}
                 </div>
+                {loginInfo}
                 {/*<header className="top_header" >*/}
                     {/*<h1>C K M</h1>*/}
                     {/*<pre className="tab">P  H  O  T  O  G  R  A  P  H  Y</pre>*/}

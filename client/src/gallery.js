@@ -10,7 +10,8 @@ export class Gallery extends React.Component {
             data: [],
             modalIsOpen: false,
             picIndex: 0,
-            picView: {"id": 1}
+            picView: {"id": 1},
+            size: 300
         };
         this.componentWillMount = this.componentWillMount.bind(this);
         this.loadPhotos = this.loadPhotos.bind(this);
@@ -18,6 +19,7 @@ export class Gallery extends React.Component {
         this.afterOpenModal = this.afterOpenModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.handleChange = this.handleChange.bind(this);
         this.nextPic = this.nextPic.bind(this);
         this.prevPic = this.prevPic.bind(this);
     }
@@ -54,6 +56,10 @@ export class Gallery extends React.Component {
         });
     }
 
+    handleChange(event) {
+        this.setState({size: event.target.value});
+    }
+
     nextPic() {
         let index = this.state.picIndex < this.state.data.length - 1 ? this.state.picIndex + 1 : 0;
         console.log(index + " " + this.state.data[index]);
@@ -73,17 +79,23 @@ export class Gallery extends React.Component {
 
     render() {
         return (
-            <div className="new_div">
-                <section className="main_section">
-                    {this.state.data.map((item, index) => {
-                        return(
-                            <Item key={index}
-                                  item={item}
-                                  onClick={() => this.handleClick(item, index)}
-                            />
-                        )
-                    })}
-                </section>
+            <div className="gallery">
+                <div className="toolbar">
+                    <input type="range" min="100" max="500" defaultValue={this.state.size} onChange={this.handleChange} className="slider" id="myRange"/>
+                </div>
+                <div className="images">
+                    <section className="main_section">
+                        {this.state.data.map((item, index) => {
+                            return(
+                                <Item key={index}
+                                      item={item}
+                                      onClick={() => this.handleClick(item, index)}
+                                      size={this.state.size}
+                                />
+                            )
+                        })}
+                    </section>
+                </div>
                 <div>
                     <PictureModal
                         modalIsOpen = {this.state.modalIsOpen}
