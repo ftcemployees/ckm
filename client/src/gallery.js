@@ -99,11 +99,19 @@ export class Gallery extends React.Component {
                     <section className="main_section">
                         {this.state.data.map((item, index) => {
                             return(
-                                <Item key={index}
-                                      item={item}
-                                      onClick={() => this.handleClick(item, index)}
-                                      size={this.state.size}
-                                />
+                                <div className={"pic-container"}>
+                                <div className={"pic-"+item.id+" pic"} onClick={() => this.handleClick(item, index)}>
+                                    <div className="text-wrapper">
+                                        <p className="description">{item.id}</p>
+                                    </div>
+                                </div>
+                                </div>
+
+                            //     <Item key={index}
+                            // item={item}
+                            // onClick={() => this.handleClick(item, index)}
+                            // size={this.state.size}
+                            // />
                             )
                         })}
                     </section>
