@@ -3,7 +3,7 @@ import Axios from 'axios';
 import { Item } from './item';
 import { PictureModal } from './picture-modal';
 
-export class Gallery extends React.Component {
+export class Gallery extends React.Component {Looploop15
     constructor(props) {
         super(props);
         this.state = {
@@ -100,11 +100,11 @@ export class Gallery extends React.Component {
                         {this.state.data.map((item, index) => {
                             return(
                                 <div className={"pic-container"}>
-                                <div className={"pic-"+item.id+" pic"} onClick={() => this.handleClick(item, index)}>
-                                    <div className="text-wrapper">
-                                        <p className="description">{item.id}</p>
+                                    <div className={"pic-"+item.id+" pic"} onClick={() => this.handleClick(item, index)}>
+                                        <div className="text-wrapper">
+                                            <p className="description">{item.id}</p>
+                                        </div>
                                     </div>
-                                </div>
                                 </div>
 
                             //     <Item key={index}

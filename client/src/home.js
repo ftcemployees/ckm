@@ -12,6 +12,5 @@ export const Main = () => {
                 <Footer />
             </div>
         </div>
-
     )
 };

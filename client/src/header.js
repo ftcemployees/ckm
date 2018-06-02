@@ -12,12 +12,14 @@ export class Header extends React.Component {
 
         return (
             <div className="header">
-                <a href="./"><img src={require("./img/logo.png")} className="logo" alt="Logo"/></a>
-                <a href="./" className="header-logo">Copper King Mansion Historic Clothing</a>
+                <a href="./"><img src={require("./img/Logo.png")} className="logo" alt="Logo"/></a>
+                {/*<a href="./" className="header-logo">Copper King Mansion Historic Clothing</a>*/}
+                <a href="./" className="header-logo">CKM</a>
                 <div className="search-box">
                     <SearchComponent/>
                 </div>
-                {loginInfo}
+                <a href="./"><img src={require("./img/User-Profile.png")} className="logo-2" alt="Logo"/></a>
+                {/*{loginInfo}*/}
                 {/*<header className="top_header" >*/}
                     {/*<h1>C K M</h1>*/}
                     {/*<pre className="tab">P  H  O  T  O  G  R  A  P  H  Y</pre>*/}
