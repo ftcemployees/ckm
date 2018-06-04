@@ -5,9 +5,11 @@ export class Header extends React.Component {
     render () {
         let loginInfo = '';
         if (sessionStorage.getItem('name_first')) {
-            loginInfo = <div className="contact-btn"><a href="/login">Log out from {sessionStorage.getItem('name_first')}</a></div>;
+            // loginInfo = <div className="contact-btn"><a href="/login">Log out from {sessionStorage.getItem('name_first')}</a></div>;
+            loginInfo = <a href="/login">Log out from {sessionStorage.getItem('name_first')}</a>;
         } else {
-            loginInfo = <div className="contact-btn"><a href="/login">Login</a></div>;
+            // loginInfo = <div className="contact-btn"><a href="/login">Login</a></div>;
+            loginInfo = <a href="/login">Login</a>;
         }
 
         return (
@@ -18,7 +20,14 @@ export class Header extends React.Component {
                 <div className="search-box">
                     <SearchComponent/>
                 </div>
-                <a href="./"><img src={require("./img/User-Profile.png")} className="logo-2" alt="Logo"/></a>
+                <button className="upload-button">+</button>
+                <div className="dropdown">
+                    <a href="./"><img src={require("./img/User-Profile.png")} className="logo-2" alt="Logo"/></a>
+                    <div className="dropdown-content">
+                        <a href="#">Upload</a>
+                        {loginInfo}
+                    </div>
+                </div>
                 {/*{loginInfo}*/}
                 {/*<header className="top_header" >*/}
                     {/*<h1>C K M</h1>*/}
