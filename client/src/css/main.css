@@ -4,14 +4,34 @@
      margin: 0;
      padding: 0;
 }
- h1{
-     font: 80px Alex brush;
-     text-shadow:rgb(110, 110, 100) 3px 3px 5px;
+ h1 {
+     float: left;
+     color: #b43315;
+     text-align: center;
+     padding: 16px 0 16px 0;
+     text-decoration: none;
+     font-size: 64px;
+     position: relative;
+     line-height: 25px;
+     border-radius: 4px;
+     font-family: 'Playfair Display SC', serif;
 }
- h1:hover{
-     color:#04B4AE;
-     transition: all 0.5s ease-in-out;
-}
+ h2 {
+     /*float: left;*/
+     color: #b43315;
+     /*text-align: center;*/
+     /*padding: 16px 0 16px 0;*/
+     /*text-decoration: none;*/
+     font-size: 42px;
+     position: relative;
+     /*line-height: 25px;*/
+     /*border-radius: 4px;*/
+     font-family: 'Playfair Display SC', serif;
+ }
+ /*h1:hover{*/
+     /*color:#04B4AE;*/
+     /*transition: all 0.5s ease-in-out;*/
+/*}*/
  h4{
      font: 14px Roboto;
      color: #204156;
@@ -20,7 +40,7 @@
      display: block;
 }
 body{
-    background: -webkit-radial-gradient(circle, #A9D0F5, #FFFFFF);
+    /*background: -webkit-radial-gradient(circle, #A9D0F5, #FFFFFF);*/
 }
  .home_page{
      max-width: inherit;
@@ -66,7 +86,7 @@ body{
  }
 
 /* Style the header links */
- .header .header-logo {
+.header-logo {
      float: left;
      color: #b43315;
      text-align: center;
@@ -849,4 +869,8 @@ i {
 
 .dropdown:hover .dropbtn {
     background-color: #3e8e41;
+}
+
+Glyphicon {
+    color: black;
 }

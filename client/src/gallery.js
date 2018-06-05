@@ -79,55 +79,55 @@ export class Gallery extends React.Component {Looploop15
 
     render() {
         return (
-            <div className="gallery">
-                <div className="toolbar">
-                    <div className="sort_buttons">
-                        <button>&#8592;1890's</button>
-                        <button>1900's</button>
-                        <button>1910's</button>
-                        <button>1920's</button>
-                        <button>1930's</button>
-                        <button>1940's</button>
-                        <button>1950's</button>
-                        <button>1960's</button>
-                        <button>1970's</button>
-                        <button>1980's&#8594;</button>
+                <div className="gallery">
+                    <div className="toolbar">
+                        <div className="sort_buttons">
+                            <button>&#8592;1890's</button>
+                            <button>1900's</button>
+                            <button>1910's</button>
+                            <button>1920's</button>
+                            <button>1930's</button>
+                            <button>1940's</button>
+                            <button>1950's</button>
+                            <button>1960's</button>
+                            <button>1970's</button>
+                            <button>1980's&#8594;</button>
+                        </div>
+                        <input type="range" min="100" max="500" defaultValue={this.state.size} onChange={this.handleChange} className="slider" id="myRange"/>
                     </div>
-                    <input type="range" min="100" max="500" defaultValue={this.state.size} onChange={this.handleChange} className="slider" id="myRange"/>
-                </div>
-                <div className="images">
-                    <section className="main_section">
-                        {this.state.data.map((item, index) => {
-                            return(
-                                <div className={"pic-container"}>
-                                    <div className={"pic-"+item.id+" pic"} onClick={() => this.handleClick(item, index)}>
-                                        <div className="text-wrapper">
-                                            <p className="description">{item.id}</p>
+                    <div className="images">
+                        <section className="main_section">
+                            {this.state.data.map((item, index) => {
+                                return(
+                                    <div className={"pic-container"}>
+                                        <div className={"pic-"+item.id+" pic"} onClick={() => this.handleClick(item, index)}>
+                                            <div className="text-wrapper">
+                                                <p className="description">{item.id}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                            //     <Item key={index}
-                            // item={item}
-                            // onClick={() => this.handleClick(item, index)}
-                            // size={this.state.size}
-                            // />
-                            )
-                        })}
-                    </section>
+                                //     <Item key={index}
+                                // item={item}
+                                // onClick={() => this.handleClick(item, index)}
+                                // size={this.state.size}
+                                // />
+                                )
+                            })}
+                        </section>
+                    </div>
+                    <div>
+                        <PictureModal
+                            modalIsOpen = {this.state.modalIsOpen}
+                            picView = {this.state.picView}
+                            nextPic={() => this.nextPic()}
+                            prevPic={() => this.prevPic()}
+                            openModal={() => this.openModal()}
+                            afterOpenModal={() => this.afterOpenModal()}
+                            closeModal={() => this.closeModal()}
+                        />
+                    </div>
                 </div>
-                <div>
-                    <PictureModal
-                        modalIsOpen = {this.state.modalIsOpen}
-                        picView = {this.state.picView}
-                        nextPic={() => this.nextPic()}
-                        prevPic={() => this.prevPic()}
-                        openModal={() => this.openModal()}
-                        afterOpenModal={() => this.afterOpenModal()}
-                        closeModal={() => this.closeModal()}
-                    />
-                </div>
-            </div>
         );
     }
 }

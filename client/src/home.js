@@ -1,16 +1,12 @@
 import React from 'react';
-import { Gallery } from "./gallery";
-import { Header } from "./header";
-import { Footer } from "./footer";
 
-export const Main = () => {
-    return (
-        <div>
+export class Home extends React.Component {
+    render () {
+        return (
             <div className="home_page">
-                <Header />
-                <Gallery />
-                <Footer />
+                <h1>Copper King Mansion</h1>
+                <h2>Historic Clothing Collection</h2>
             </div>
-        </div>
-    )
-};
+        );
+    }
+}

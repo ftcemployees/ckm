@@ -82,7 +82,7 @@ export class SearchComponent extends React.Component {
     render() {
         const { value, suggestions } = this.state;
         const inputProps = {
-            placeholder: "Search.. (type b)",
+            placeholder: "Search..",
             value,
             onChange: this.onChange
         };
