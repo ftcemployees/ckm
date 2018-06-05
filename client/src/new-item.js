@@ -4,11 +4,7 @@ import axios from 'axios';
 function createImage(src, width, height, alt, id, className, appendMethod) {
     let newImg = document.createElement('IMG');
     newImg.setAttribute('src', src);
-    newImg.setAttribute('id', id);
     newImg.setAttribute('class', className);
-    newImg.setAttribute('width', width);
-    newImg.setAttribute('height', height);
-    newImg.setAttribute('alt', alt);
     appendMethod.appendChild(newImg);
 }
 
@@ -16,24 +12,8 @@ export class NewItem extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            imgs: [
-                {
-                    src: 'img/1.jpeg',
-                    className: 'img-upload'
-                },
-                {
-                    src: 'img/2.jpg',
-                    className: 'img-upload'
-                },
-                {
-                    src: 'img/3.jpg',
-                    className: 'img-upload'
-                },
-                {
-                    src: 'img/4.jpg',
-                    className: 'img-upload'
-                }
-            ]
+            imgsExtracted: [],
+            imgsOriginal: []
         }
         this.handleImageSelect = this.handleImageSelect.bind(this);
         this.sendUpload = this.sendUpload.bind(this);
@@ -59,24 +39,24 @@ export class NewItem extends React.Component{
 
     handleImageSelect(input) {
         if (input.target.files){
-            const imgContainer = document.getElementById('imgContainer');
-            // remove all uploaded pictures
-            while (imgContainer.firstChild) {
-                imgContainer.removeChild(imgContainer.firstChild);
-            }
+            this.setState({imgsExtracted: []});
+            this.setState.imgsOriginal = input.target.files;
+            let imgsExtracted = [];
             for (let i = 0; i < input.target.files.length; i++){
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    createImage(e.target.result, 220, 230, 'Picture ', 'img-' + i, 'img-upload', imgContainer);
+                    imgsExtracted.push({src: e.target.result, className: 'img-upload'})
+                    // createImage(e.target.result, 220, 230, 'Picture ', 'img-' + i, 'img-upload', imgContainer);
                 }
                 reader.readAsDataURL(input.target.files[i]);
-
             }
+            this.setState({imgsExtracted: imgsExtracted});
         }
     }
 
     render() {
-        const listOfImgs = this.state.imgs.map((img) =>
+        const listOfImgs = this.state.imgsExtracted.map((img) =>
+            {console.log(img)}
             <img src={img.src} className={img.className} />
         );
         return (
