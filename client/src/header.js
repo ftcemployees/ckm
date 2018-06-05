@@ -11,7 +11,7 @@ export class Header extends React.Component {
                 <div className="dropdown">
                     <a href="./"><img src={require("./img/User-Profile.png")} className="logo-2" alt="Logo"/></a>
                     <div className="dropdown-content">
-                        <a href="#">Upload</a>
+                        <a href="/">Upload</a>
                         <a href="/login">Log out from {sessionStorage.getItem('name_first')}</a>
                     </div>
                 </div>;
@@ -26,6 +26,20 @@ export class Header extends React.Component {
                 <a href="./"><img src={require("./img/Logo.png")} className="logo" alt="Logo"/></a>
                 <a href="./" className="header-logo">CKM</a>
                 <div className="search-box">
+                    <div className="select-style">
+                        <select>
+                            <option value="All">All</option>
+                            <option value="1890">1890</option>
+                            <option value="1900">1900</option>
+                            <option value="1910">1910</option>
+                            <option value="1920">1920</option>
+                            <option value="1930">1930</option>
+                            <option value="1940">1940</option>
+                            <option value="1950">1950</option>
+                            <option value="1960">1960</option>
+                            <option value="1970">1970</option>
+                        </select>
+                    </div>
                     <SearchComponent/>
                 </div>
                 <button className="upload-button">+</button>

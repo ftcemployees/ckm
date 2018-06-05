@@ -1,9 +1,8 @@
 import React from 'react';
 import Axios from 'axios';
-import { Item } from './item';
 import { PictureModal } from './picture-modal';
 
-export class Gallery extends React.Component {Looploop15
+export class Gallery extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -96,7 +95,7 @@ export class Gallery extends React.Component {Looploop15
                         <input type="range" min="100" max="500" defaultValue={this.state.size} onChange={this.handleChange} className="slider" id="myRange"/>
                     </div>
                     <div className="images">
-                        <section className="main_section">
+                        {/*<section className="main_section">*/}
                             {this.state.data.map((item, index) => {
                                 return(
                                     <div className={"pic-container"}>
@@ -114,7 +113,7 @@ export class Gallery extends React.Component {Looploop15
                                 // />
                                 )
                             })}
-                        </section>
+                        {/*</section>*/}
                     </div>
                     <div>
                         <PictureModal
