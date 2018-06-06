@@ -38,6 +38,7 @@ app.get('/search', async (req, res) => {
         if (err) throw err;
         if (result[0]) {
             res.send(result)
+            // res.send('');
         } else {
             res.send('');
         }
@@ -45,9 +46,9 @@ app.get('/search', async (req, res) => {
 });
 
 app.get('/tag_suggestion',  (req, res) => {
-    const search = req.body.search
+    const search = req.body.search;
     con.query(queries.tag_suggestion(search), function (err, result, fields) {
-        console.log(result)
+        console.log(JSON.stringify(result));
         if (err) throw err;
         if (result[0]) {
             res.send(result)

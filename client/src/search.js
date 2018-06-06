@@ -49,9 +49,10 @@ export class SearchComponent extends React.Component {
     async loadTags() {
         Axios.get('/tag_suggestion')
             .then(function (response) {
-                if (response.data.length > 0)
+                if (response.data.length > 0) {
                     tags = {data: response.data};
-                else
+                    console.log(tags);
+                } else
                     tags = {data: [{name: 'beaded'},{name: 'bell'},{name: 'black'},{name: 'boiled'}]}
             })
             .catch(function (error) {
@@ -65,6 +66,16 @@ export class SearchComponent extends React.Component {
         this.setState({
             value: newValue
         });
+    };
+
+    onKeyDown = (event) => {
+        if(event.keyCode=='13') {
+            this.props.setSearch(event.target.value)
+            console.log(event.target.value);
+        }
+        // this.setState({
+        //     value: newValue
+        // });
     };
 
     onSuggestionsFetchRequested = ({ value }) => {
@@ -84,7 +95,8 @@ export class SearchComponent extends React.Component {
         const inputProps = {
             placeholder: "Search..",
             value,
-            onChange: this.onChange
+            onChange: this.onChange,
+            onKeyDown: this.onKeyDown
         };
 
         return (

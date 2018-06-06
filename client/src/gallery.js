@@ -35,6 +35,7 @@ export class Gallery extends React.Component {
         let self = this;
         Axios.get('/search')
         .then(function (response) {
+            console.log(response.data.length);
             if (response.data.length > 0)
                 self.setState({data: response.data});
             else
@@ -94,15 +95,17 @@ export class Gallery extends React.Component {
                         </div>
                         <input type="range" min="100" max="500" defaultValue={this.state.size} onChange={this.handleChange} className="slider" id="myRange"/>
                     </div>
+                    {/*<p>{this.props.sort} - {this.props.search}</p>*/}
                     <div className="images">
                         {/*<section className="main_section">*/}
                             {this.state.data.map((item, index) => {
+                                const divStyle = {
+                                    // backgroundImage: 'url(/img/' + item.id + '.jpg)'
+                                }
                                 return(
-                                    <div className={"pic-container"}>
-                                        <div className={"pic-"+item.id+" pic"} onClick={() => this.handleClick(item, index)}>
-                                            <div className="text-wrapper">
-                                                <p className="description">{item.id}</p>
-                                            </div>
+                                    <div key={item.id+'-container'}className={"pic-container"}>
+                                        <div key={item.id} className={"pic"} style={divStyle} onClick={() => this.handleClick(item, index)} title={item.id}>
+                                            {item.id + ' ' + item.category + ' ' + item.gender + ' ' + item.item + ' ' + item.era + ' ' + item.description}
                                         </div>
                                     </div>
 
@@ -130,3 +133,11 @@ export class Gallery extends React.Component {
         );
     }
 }
+//
+// <div className={"pic-container"}>
+//     <div className={"pic-"+item.id+" pic"} onClick={() => this.handleClick(item, index)}>
+//         <div className="text-wrapper">
+//             <p className="description">{item.id}</p>
+//         </div>
+//     </div>
+// </div>

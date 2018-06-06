@@ -2,6 +2,12 @@ import React from 'react';
 import { SearchComponent } from "./search";
 
 export class Header extends React.Component {
+
+    handleSortChange(event) {
+        let value = event.target.value;
+        this.props.setSort(value);
+    }
+
     render () {
         let loginInfo = '';
         if (sessionStorage.getItem('name_first')) {
@@ -27,7 +33,7 @@ export class Header extends React.Component {
                 <a href="./" className="header-logo">CKM</a>
                 <div className="search-box">
                     <div className="select-style">
-                        <select>
+                        <select onChange={(e) => this.handleSortChange(e)}>
                             <option value="All">All</option>
                             <option value="1890">1890</option>
                             <option value="1900">1900</option>
@@ -40,7 +46,7 @@ export class Header extends React.Component {
                             <option value="1970">1970</option>
                         </select>
                     </div>
-                    <SearchComponent/>
+                    <SearchComponent setSearch={(search) => this.props.setSearch(search)}/>
                 </div>
                 <button className="upload-button">+</button>
                 {loginInfo}

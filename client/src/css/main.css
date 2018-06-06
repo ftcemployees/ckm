@@ -94,7 +94,7 @@ body{
 .home-page-image img {
     border-radius: 50%;
     max-width: 75%;
-    margin: 0 auto
+    margin: 0 auto;
 }
 .home-page-image:after {
     content: "";
@@ -354,7 +354,12 @@ body{
      overflow: hidden;
      position: absolute;
      top: 0; bottom: 0; left: 0; right: 0;
+     object-fit: cover;
 }
+
+ .pic img {
+     object-fit: cover;
+ }
 
  .pic-container {
      position: relative;
@@ -365,7 +370,7 @@ body{
  }
 
  .pic-1{
-     background-image: url("../img/1.jpeg");
+     background-image: url("../img/1.jpg");
 }
  .pic-2{
      background-image: url("../img/2.jpg");
@@ -380,7 +385,7 @@ body{
      background-image: url("../img/5.jpg");
 }
  .pic-6{
-     background-image: url("../img/6.jpeg");
+     background-image: url("../img/6.jpg");
 }
  .pic-7{
      background-image: url("../img/7.jpg");
@@ -401,7 +406,7 @@ body{
      background-image: url("../img/12.jpg");
 }
  .pic-13{
-     background-image: url("../img/13.jpeg");
+     background-image: url("../img/13.jpg");
 }
  .pic-14{
      background-image: url("../img/14.jpg");
@@ -669,7 +674,7 @@ i {
 
     /*text-align: center;*/
     float: right;
-    padding: 14px 40px;
+    padding: 14px 2.5%;
     /*text-decoration: none;*/
     /*font-size: 23px;*/
     /*font-weight: bold;*/
@@ -680,7 +685,7 @@ i {
     /*min-width: 110px;*/
     /*display: flex;*/
     display: inline-flex;
-    height: 50px;
+    height: 36px;
 }
 
 .react-autosuggest__container {
@@ -698,6 +703,7 @@ i {
     /*padding-right: 39px;*/
     margin-left: -20px;
     margin-right: 40px;
+
     /*padding-left: 80px;*/
     /*width: 100%;*/
     /*overflow:hidden;*/
@@ -760,7 +766,8 @@ i {
     font-size: 14px;
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
-    max-height: 100px;
+    height: 270px;
+    max-height: fit-content;
     overflow-y: auto;
     z-index: 2;
 }
@@ -937,6 +944,7 @@ i {
     display: inline-block;
     width: 51px;
     min-width: 51px;
+    height: inherit;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
     overflow: hidden;
@@ -953,6 +961,7 @@ i {
 .select-style select {
     width: 100%;
     text-align: center;
+    height: 100%;
     padding: 10px 10px;
     font-family: Helvetica, sans-serif;
     font-weight: 300;
