@@ -33,7 +33,7 @@ app.post('/login', function (req, res) {
 });
 
 app.get('/search', async (req, res) => {
-    const search = req.body.search;
+    const search = req.query.search;
     con.query(queries.general_query(search), function (err, result, fields) {
         if (err) throw err;
         if (result[0]) {

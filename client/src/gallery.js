@@ -1,6 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 import { PictureModal } from './picture-modal';
+import { Filter } from "./filter";
 
 export class Gallery extends React.Component {
     constructor(props) {
@@ -10,7 +11,8 @@ export class Gallery extends React.Component {
             modalIsOpen: false,
             picIndex: 0,
             picView: {"id": 1},
-            size: 300
+            size: 300,
+            filters: []
         };
         this.componentWillMount = this.componentWillMount.bind(this);
         this.loadPhotos = this.loadPhotos.bind(this);
@@ -21,19 +23,37 @@ export class Gallery extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.nextPic = this.nextPic.bind(this);
         this.prevPic = this.prevPic.bind(this);
+
+        this.addFilter = this.addFilter.bind(this);
     }
 
     openModal()         { this.setState({modalIsOpen: true}); }
     afterOpenModal()    { }
     closeModal()        { this.setState({modalIsOpen: false}); }
 
-    componentWillMount() {
-        this.loadPhotos();
+    addFilter(filter) {
+        // let f = filter;
+        this.state.filters.push([filter]);
+        console.log(this.state.filters);
     }
 
-    async loadPhotos() {
+    removeFilter(filter) {
+
+    }
+
+    componentWillMount() {
+        this.loadPhotos("Apparel");
+    }
+
+    componentWillReceiveProps() {
+        this.loadPhotos(this.props.search);
+    }
+
+    async loadPhotos(searchToken) {
         let self = this;
-        Axios.get('/search')
+        Axios.get('/search', {
+            params: {search: [searchToken]}
+        })
         .then(function (response) {
             console.log(response.data.length);
             if (response.data.length > 0)
@@ -79,6 +99,8 @@ export class Gallery extends React.Component {
 
     render() {
         return (
+            <div style={{display: 'flex'}}>
+                <Filter addFilter={(filter) => this.addFilter(filter)}/>
                 <div className="gallery">
                     <div className="toolbar">
                         <div className="sort_buttons">
@@ -130,6 +152,7 @@ export class Gallery extends React.Component {
                         />
                     </div>
                 </div>
+            </div>
         );
     }
 }

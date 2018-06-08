@@ -18,7 +18,7 @@ const tag_autofill = (tag_name) => SQL`SELECT name FROM tag WHERE name LIKE '%${
 // OR branding LIKE '%${search}%'
 // OR measurement LIKE '%${search}%'
 // OR history LIKE '%${search}%' LIMIT 15`;
-const general_query = () => SQL`SELECT DISTINCT item_number AS 'id', category, gender, item, description FROM ftc.item`;
+const general_query = (search) => SQL`SELECT DISTINCT item_number AS 'id', category, gender, item, description FROM ftc.item WHERE category = ${search} LIMIT 100`;
 // const tag_suggestion = () => SQL`SELECT * FROM tag`;
 const tag_suggestion = () => SQL`SELECT DISTINCT category AS name, gender AS name, item AS name FROM ftc.item;`;
 const getImages = "select * from users";

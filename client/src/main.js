@@ -31,13 +31,12 @@ export class Main extends React.Component {
         return (
             <div className="main">
                 <Header setSort={(sort)=>this.setSort(sort)} setSearch={(search)=>this.setSearch(search)}/>
-                <Filter/>
-                <Router>
-                    <Switch>
-                        <Route path='/gallery' render={() => <Gallery sort={this.state.sort} search={this.state.search}/>}/>
-                        <Route path='/' component={Home}/>
-                    </Switch>
-                </Router>
+                    <Router>
+                        <Switch>
+                            <Route path='/gallery' render={() => <Gallery sort={this.state.sort} search={this.state.search}/>}/>
+                            <Route path='/' component={Home}/>
+                        </Switch>
+                    </Router>
                 <Footer/>
             </div>
         )
