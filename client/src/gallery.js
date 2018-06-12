@@ -11,8 +11,7 @@ export class Gallery extends React.Component {
             modalIsOpen: false,
             picIndex: 0,
             picView: {"id": 1},
-            size: 300,
-            filters: []
+            size: 300
         };
         this.componentWillMount = this.componentWillMount.bind(this);
         this.loadPhotos = this.loadPhotos.bind(this);
@@ -24,46 +23,66 @@ export class Gallery extends React.Component {
         this.nextPic = this.nextPic.bind(this);
         this.prevPic = this.prevPic.bind(this);
 
-        this.addFilter = this.addFilter.bind(this);
+        this.setFilter = this.setFilter.bind(this);
     }
 
     openModal()         { this.setState({modalIsOpen: true}); }
     afterOpenModal()    { }
     closeModal()        { this.setState({modalIsOpen: false}); }
 
-    addFilter(filter) {
-        // let f = filter;
-        this.state.filters.push([filter]);
-        console.log(this.state.filters);
-    }
-
-    removeFilter(filter) {
-
+    setFilter(filter) {
+        let self = this;
+        Axios.get('/search', {
+            params: {search: filter}
+        })
+            .then(function (response) {
+                if (response.data.length > 0)
+                    self.setState({data: response.data});
+                else {
+                    self.setState({data: []});
+                    // self.setState({data: [{id: 1}, {id: 2}, {id: 3}, {id: 4}, {id: 5}, {id: 6}, {id: 7}, {id: 8}, {id: 9}, {id: 10}, {id: 11}, {id: 12}, {id: 13}, {id: 14}, {id: 15}]})
+                }
+            })
+            .catch(function (error) {
+                self.setState({data: []});
+                // const dataTemp = [{id: 1},{id: 2},{id: 3},{id: 4},{id: 5},{id: 6},{id: 7},{id: 8},{id: 9},{id: 10},{id: 11},{id: 12},{id: 13},{id: 14},{id: 15}];
+                // self.setState({data: dataTemp});
+                console.log(error);
+            });
+        console.log(this.state.data);
     }
 
     componentWillMount() {
-        this.loadPhotos("Apparel");
+        this.loadPhotos({
+                eras: [],
+                categories: [],
+                genders: [],
+                items: []
+            });
     }
 
     componentWillReceiveProps() {
-        this.loadPhotos(this.props.search);
+        // this.loadPhotos(this.props.search);
     }
 
     async loadPhotos(searchToken) {
         let self = this;
         Axios.get('/search', {
-            params: {search: [searchToken]}
+            params: {search: searchToken}
         })
         .then(function (response) {
             console.log(response.data.length);
             if (response.data.length > 0)
                 self.setState({data: response.data});
-            else
-                self.setState({data: [{id: 1},{id: 2},{id: 3},{id: 4},{id: 5},{id: 6},{id: 7},{id: 8},{id: 9},{id: 10},{id: 11},{id: 12},{id: 13},{id: 14},{id: 15}]})
+            else {
+                self.setState({data: []})
+                // self.setState({data: [{id: 1}, {id: 2}, {id: 3}, {id: 4}, {id: 5}, {id: 6}, {id: 7}, {id: 8}, {id: 9}, {id: 10}, {id: 11}, {id: 12}, {id: 13}, {id: 14}, {id: 15}]})
+            }
         })
         .catch(function (error) {
-            const dataTemp = [{id: 1},{id: 2},{id: 3},{id: 4},{id: 5},{id: 6},{id: 7},{id: 8},{id: 9},{id: 10},{id: 11},{id: 12},{id: 13},{id: 14},{id: 15}];
-            self.setState({data: dataTemp});
+            self.setState({data: []});
+            // const dataTemp = [{id: 1},{id: 2},{id: 3},{id: 4},{id: 5},{id: 6},{id: 7},{id: 8},{id: 9},{id: 10},{id: 11},{id: 12},{id: 13},{id: 14},{id: 15}];
+            // self.setState({data: dataTemp});
             console.log(error);
         });
     }
@@ -100,7 +119,7 @@ export class Gallery extends React.Component {
     render() {
         return (
             <div style={{display: 'flex'}}>
-                <Filter addFilter={(filter) => this.addFilter(filter)}/>
+                <Filter setFilter={(filter) => this.setFilter(filter)}/>
                 <div className="gallery">
                     <div className="toolbar">
                         <div className="sort_buttons">
@@ -117,15 +136,14 @@ export class Gallery extends React.Component {
                         </div>
                         <input type="range" min="100" max="500" defaultValue={this.state.size} onChange={this.handleChange} className="slider" id="myRange"/>
                     </div>
-                    {/*<p>{this.props.sort} - {this.props.search}</p>*/}
                     <div className="images">
                         {/*<section className="main_section">*/}
                             {this.state.data.map((item, index) => {
                                 const divStyle = {
                                     // backgroundImage: 'url(/img/' + item.id + '.jpg)'
-                                }
+                                };
                                 return(
-                                    <div key={item.id+'-container'}className={"pic-container"}>
+                                    <div key={item.id+'-container'} className={"pic-container"}>
                                         <div key={item.id} className={"pic"} style={divStyle} onClick={() => this.handleClick(item, index)} title={item.id}>
                                             {item.id + ' ' + item.category + ' ' + item.gender + ' ' + item.item + ' ' + item.era + ' ' + item.description}
                                         </div>

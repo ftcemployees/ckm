@@ -32,9 +32,10 @@ app.post('/login', function (req, res) {
     });
 });
 
-app.get('/search', async (req, res) => {
-    const search = req.query.search;
-    con.query(queries.general_query(search), function (err, result, fields) {
+app.get('/search', (req, res) => {
+    const search = JSON.parse(req.query.search);
+    // console.log(search);
+    con.query(queries.search_query(search), function (err, result, fields) {
         if (err) throw err;
         if (result[0]) {
             res.send(result)
@@ -48,7 +49,7 @@ app.get('/search', async (req, res) => {
 app.get('/tag_suggestion',  (req, res) => {
     const search = req.body.search;
     con.query(queries.tag_suggestion(search), function (err, result, fields) {
-        console.log(JSON.stringify(result));
+        // console.log(JSON.stringify(result));
         if (err) throw err;
         if (result[0]) {
             res.send(result)

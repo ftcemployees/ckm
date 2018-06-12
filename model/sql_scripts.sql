@@ -31,21 +31,21 @@ create table item (
 );
 
 --create table item (
---  item_number int not null,
---  category text not null,
---  gender text not null,
---  item text not null,
---  measurement text,
---  era text,
---  style_lines text,
---  description text,
---  branding text,
---  size text,
---  history text,
---  created_at datetime default now(),
---  updated_at datetime default now(),
---  deleted_at datetime
---);
+--    item_number int not null,
+--    category text not null,
+--    gender text not null,
+--    item text not null,
+--    measurement text,
+--    era text,
+--    style_lines text,
+--    description text,
+--    branding text,
+--    size text,
+--    history text,
+--    created_at datetime default now(),
+--    updated_at datetime default now(),
+--    deleted_at datetime
+--  );
 
 create table tag (
   id int not null auto_increment,

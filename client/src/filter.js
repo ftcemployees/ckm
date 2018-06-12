@@ -37,50 +37,44 @@ export class Filter extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            eras: [],
-            categories: [],
-            genders: [],
-            items: [],
+            filters: {
+                eras: [],
+                categories: [],
+                genders: [],
+                items: []
+            }
         };
+
+        // this.setSort = this.setSort.bind(this);
     }
 
     componentWillMount() {
-        (eras + categories + genders + items);
+        // (eras + categories + genders + items);
     }
 
-    // handleChange (item, e) {
-    //     if (e.target.checked) {
-    //         console.log(item.item);
-    //         this.props.addFilter(item.item);
-    //     }
-    // }
 
-    handleChange(item, e) {
+    handleChange(category, e) {
         // current array of options
-        let val = item;
-        console.log(val);
-        const options = this.state.options;
+        let val = e.target.value;
         let index;
 
         // check if the check box is checked or unchecked
         if (e.target.checked) {
             // add the numerical value of the checkbox to options array
-            options.push(val);
+            category.push(val)
         } else {
             // or remove the value from the unchecked checkbox from the array
-            index = options.indexOf(val);
-            options.splice(index, 1);
+            index = category.indexOf(val);
+            category.splice(index, 1);
         }
 
-        // update the state with the new array of options
-        this.setState({ options: options });
-        console.log(this.state.options);
+        this.props.setFilter(this.state.filters);
     }
 
 
-    createCheckBoxes = (item) => (
+    createCheckBoxes = (item, category) => (
         <label key={item}  className="container">{item}
-            <input type="checkbox" onChange={(e)=>this.handleChange(item, e)}/>
+            <input type="checkbox" value={item} onChange={(e)=>this.handleChange(category, e)}/>
             <span className="checkmark"></span>
         </label>
     )
@@ -91,16 +85,21 @@ export class Filter extends React.Component {
               <h1>Filter</h1>
 
               <h2>Era</h2>
-              {eras.map(this.createCheckBoxes)}
+              {eras.map((val) => this.createCheckBoxes(val, this.state.filters.eras))}
+              {/*{eras.map((item) =>*/}
+                  {/*<label key={item}  className="container">{item}*/}
+                      {/*<input type="checkbox" value={item} onChange={(e)=>this.handleChange(this.state.filters.eras, e)}/>*/}
+                      {/*<span className="checkmark"></span>*/}
+                  {/*</label>)}*/}
 
               <h2>Category</h2>
-              {categories.map(this.createCheckBoxes)}
+              {categories.map((val) => this.createCheckBoxes(val, this.state.filters.categories))}
 
               <h2>Gender</h2>
-              {genders.map(this.createCheckBoxes)}
+              {genders.map((val) => this.createCheckBoxes(val, this.state.filters.genders))}
 
               <h2>Items</h2>
-              {items.map(this.createCheckBoxes)}
+              {items.map((val) => this.createCheckBoxes(val, this.state.filters.items))}
           </div>
         );
     }
