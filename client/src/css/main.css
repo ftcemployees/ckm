@@ -124,7 +124,7 @@ body{
      /*background: #2a2a2a;*/
      background: #1d1d1d;
      /*backgorund: #777;*/
-     padding: 20px 3%;
+     padding: 20px 3% 20px 1%;
  }
 
 /* Style the header links */
@@ -1076,4 +1076,44 @@ i {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+}
+
+.filter-button {
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 15px 20px;
+    text-decoration: none;
+    font-size: 50px;
+    position: relative;
+    line-height: 25px;
+    /*border-radius: 25px;*/
+    font-family: 'Playfair Display SC', serif;
+}
+
+.load-more-button {
+    text-align: center;
+    font-size: 20px;
+    font-family: "Roboto", sans-serif;
+    padding: 10px 50px;
+    border: 1px solid black;
+    border-radius: 4px;
+    margin: 0 auto 20px auto;
+    display: block;
+}
+.load-more-button:hover {
+    color: white;
+    background: black;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.load-more-button:active {
+    outline: none;
+    color: black;
+    background: #FFF;
+}
+
+.load-more-button:focus {
+    outline: none;
 }

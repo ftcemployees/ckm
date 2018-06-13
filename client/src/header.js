@@ -30,6 +30,7 @@ export class Header extends React.Component {
         return (
             <div className="header">
                 <a href="./"><img src={require("./img/Logo.png")} className="logo" alt="Logo"/></a>
+                <span className="filter-button">&#9776;</span>
                 <a href="./" className="header-logo">CKM</a>
                 <div className="search-box">
                     <div className="select-style">

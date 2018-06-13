@@ -11,7 +11,10 @@ export class Gallery extends React.Component {
             modalIsOpen: false,
             picIndex: 0,
             picView: {"id": 1},
-            size: 300
+            size: 300,
+            searchToken: {},
+            lower_value: 0,
+            isLoaded: true
         };
         this.componentWillMount = this.componentWillMount.bind(this);
         this.loadPhotos = this.loadPhotos.bind(this);
@@ -23,58 +26,56 @@ export class Gallery extends React.Component {
         this.nextPic = this.nextPic.bind(this);
         this.prevPic = this.prevPic.bind(this);
 
-        this.setFilter = this.setFilter.bind(this);
+        this.loadMorePhotos = this.loadMorePhotos.bind(this);
     }
 
     openModal()         { this.setState({modalIsOpen: true}); }
     afterOpenModal()    { }
     closeModal()        { this.setState({modalIsOpen: false}); }
 
-    setFilter(filter) {
-        let self = this;
-        Axios.get('/search', {
-            params: {search: filter}
-        })
-            .then(function (response) {
-                if (response.data.length > 0)
-                    self.setState({data: response.data});
-                else {
-                    self.setState({data: []});
-                    // self.setState({data: [{id: 1}, {id: 2}, {id: 3}, {id: 4}, {id: 5}, {id: 6}, {id: 7}, {id: 8}, {id: 9}, {id: 10}, {id: 11}, {id: 12}, {id: 13}, {id: 14}, {id: 15}]})
-                }
-            })
-            .catch(function (error) {
-                self.setState({data: []});
-                // const dataTemp = [{id: 1},{id: 2},{id: 3},{id: 4},{id: 5},{id: 6},{id: 7},{id: 8},{id: 9},{id: 10},{id: 11},{id: 12},{id: 13},{id: 14},{id: 15}];
-                // self.setState({data: dataTemp});
-                console.log(error);
-            });
-        console.log(this.state.data);
-    }
-
     componentWillMount() {
         this.loadPhotos({
-                eras: [],
-                categories: [],
-                genders: [],
-                items: []
+                era: [],
+                category: [],
+                gender: [],
+                item: []
             });
     }
 
-    componentWillReceiveProps() {
-        // this.loadPhotos(this.props.search);
+    componentDidMount() {
+        window.addEventListener('scroll', this.onScroll, false);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.onScroll, false);
+    }
+
+    onScroll = () => {
+        if (
+            (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 250) &&
+            this.state.data.length && this.state.isLoaded
+        ) {
+            // this.loadMorePhotos();
+        }
     }
 
     async loadPhotos(searchToken) {
+        this.setState({
+            searchToken: searchToken,
+            lower_value: 0});
         let self = this;
         Axios.get('/search', {
-            params: {search: searchToken}
+            params: {
+                search: searchToken,
+                lower: 0
+            }
         })
         .then(function (response) {
             console.log(response.data.length);
-            if (response.data.length > 0)
+            if (response.data.length > 0) {
                 self.setState({data: response.data});
-            else {
+                self.setState({isLoaded: true})
+            } else {
                 self.setState({data: []})
                 // self.setState({data: [{id: 1}, {id: 2}, {id: 3}, {id: 4}, {id: 5}, {id: 6}, {id: 7}, {id: 8}, {id: 9}, {id: 10}, {id: 11}, {id: 12}, {id: 13}, {id: 14}, {id: 15}]})
             }
@@ -85,6 +86,35 @@ export class Gallery extends React.Component {
             // self.setState({data: dataTemp});
             console.log(error);
         });
+    }
+
+    async loadMorePhotos() {
+        console.log("egg");
+        let self = this;
+        self.setState({lower_value: this.state.lower_value + 50, isLoaded: false});
+        Axios.get('/search', {
+            params: {
+                search: self.state.searchToken,
+                lower: self.state.lower_value
+            }
+        })
+            .then(function (response) {
+                console.log(response.data.length);
+                if (response.data.length > 0) {
+                    self.setState({data: self.state.data.concat(response.data)});
+                    // console.log([self.state.data, response.data]);
+                    self.setState({isLoaded: true})
+                }
+                else {
+                    // self.setState({data: []})
+                    self.setState({isLoaded: true})
+                }
+            })
+            .catch(function (error) {
+                // self.setState({data: []});
+                console.log(error);
+                self.setState({isLoaded: true})
+            });
     }
 
     handleClick(item, index) {
@@ -119,7 +149,7 @@ export class Gallery extends React.Component {
     render() {
         return (
             <div style={{display: 'flex'}}>
-                <Filter setFilter={(filter) => this.setFilter(filter)}/>
+                <Filter setFilter={(filter) => this.loadPhotos(filter)}/>
                 <div className="gallery">
                     <div className="toolbar">
                         <div className="sort_buttons">
@@ -169,6 +199,7 @@ export class Gallery extends React.Component {
                             closeModal={() => this.closeModal()}
                         />
                     </div>
+                    <button className="load-more-button" onClick={() => this.loadMorePhotos()}>Load More</button>
                 </div>
             </div>
         );

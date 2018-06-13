@@ -34,12 +34,10 @@ app.post('/login', function (req, res) {
 
 app.get('/search', (req, res) => {
     const search = JSON.parse(req.query.search);
-    // console.log(search);
-    con.query(queries.search_query(search), function (err, result, fields) {
+    con.query(queries.search_query(search, req.query.lower), function (err, result, fields) {
         if (err) throw err;
         if (result[0]) {
-            res.send(result)
-            // res.send('');
+            res.send(result);
         } else {
             res.send('');
         }
