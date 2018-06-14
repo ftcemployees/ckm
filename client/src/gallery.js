@@ -22,7 +22,6 @@ export class Gallery extends React.Component {
         this.afterOpenModal = this.afterOpenModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
         this.handleClick = this.handleClick.bind(this);
-        this.handleChange = this.handleChange.bind(this);
         this.nextPic = this.nextPic.bind(this);
         this.prevPic = this.prevPic.bind(this);
 
@@ -55,7 +54,7 @@ export class Gallery extends React.Component {
             (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 250) &&
             this.state.data.length && this.state.isLoaded
         ) {
-            // this.loadMorePhotos();
+            this.loadMorePhotos();
         }
     }
 
@@ -89,7 +88,6 @@ export class Gallery extends React.Component {
     }
 
     async loadMorePhotos() {
-        console.log("egg");
         let self = this;
         self.setState({lower_value: this.state.lower_value + 50, isLoaded: false});
         Axios.get('/search', {
@@ -102,16 +100,13 @@ export class Gallery extends React.Component {
                 console.log(response.data.length);
                 if (response.data.length > 0) {
                     self.setState({data: self.state.data.concat(response.data)});
-                    // console.log([self.state.data, response.data]);
                     self.setState({isLoaded: true})
                 }
                 else {
-                    // self.setState({data: []})
                     self.setState({isLoaded: true})
                 }
             })
             .catch(function (error) {
-                // self.setState({data: []});
                 console.log(error);
                 self.setState({isLoaded: true})
             });
@@ -123,10 +118,6 @@ export class Gallery extends React.Component {
             picIndex: index,
             picView: this.state.data[index]
         });
-    }
-
-    handleChange(event) {
-        this.setState({size: event.target.value});
     }
 
     nextPic() {
@@ -151,42 +142,23 @@ export class Gallery extends React.Component {
             <div style={{display: 'flex'}}>
                 <Filter setFilter={(filter) => this.loadPhotos(filter)}/>
                 <div className="gallery">
-                    <div className="toolbar">
-                        <div className="sort_buttons">
-                            <button>&#8592;1890's</button>
-                            <button>1900's</button>
-                            <button>1910's</button>
-                            <button>1920's</button>
-                            <button>1930's</button>
-                            <button>1940's</button>
-                            <button>1950's</button>
-                            <button>1960's</button>
-                            <button>1970's</button>
-                            <button>1980's&#8594;</button>
-                        </div>
-                        <input type="range" min="100" max="500" defaultValue={this.state.size} onChange={this.handleChange} className="slider" id="myRange"/>
-                    </div>
                     <div className="images">
-                        {/*<section className="main_section">*/}
-                            {this.state.data.map((item, index) => {
+                        {this.state.data.length ?
+                            this.state.data.map((item, index) => {
                                 const divStyle = {
                                     // backgroundImage: 'url(/img/' + item.id + '.jpg)'
                                 };
-                                return(
-                                    <div key={item.id+'-container'} className={"pic-container"}>
-                                        <div key={item.id} className={"pic"} style={divStyle} onClick={() => this.handleClick(item, index)} title={item.id}>
+                                return (
+                                    <div key={item.id + '-container'} className={"pic-container"}>
+                                        <div key={item.id} className={"pic"} style={divStyle}
+                                             onClick={() => this.handleClick(item, index)} title={item.id}>
                                             {item.id + ' ' + item.category + ' ' + item.gender + ' ' + item.item + ' ' + item.era + ' ' + item.description}
                                         </div>
                                     </div>
-
-                                //     <Item key={index}
-                                // item={item}
-                                // onClick={() => this.handleClick(item, index)}
-                                // size={this.state.size}
-                                // />
                                 )
-                            })}
-                        {/*</section>*/}
+                            })
+                            : <div className="no-results-message">No Results...</div>
+                        }
                     </div>
                     <div>
                         <PictureModal
@@ -199,17 +171,8 @@ export class Gallery extends React.Component {
                             closeModal={() => this.closeModal()}
                         />
                     </div>
-                    <button className="load-more-button" onClick={() => this.loadMorePhotos()}>Load More</button>
                 </div>
             </div>
         );
     }
 }
-//
-// <div className={"pic-container"}>
-//     <div className={"pic-"+item.id+" pic"} onClick={() => this.handleClick(item, index)}>
-//         <div className="text-wrapper">
-//             <p className="description">{item.id}</p>
-//         </div>
-//     </div>
-// </div>

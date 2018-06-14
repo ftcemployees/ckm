@@ -15,7 +15,7 @@ export class Main extends React.Component {
 
     setSearch(search) {
         this.setState({
-            search: search,
+            search: search
         });
     }
 
@@ -25,7 +25,7 @@ export class Main extends React.Component {
                 <Header setSort={(sort)=>this.setSort(sort)} setSearch={(search)=>this.setSearch(search)}/>
                     <Router>
                         <Switch>
-                            <Route path='/gallery' render={() => <Gallery search={this.state.search}/>}/>
+                            <Route path='/gallery' render={() => <Gallery search={this.state.search} showFilter={this.state.showFilter}/>}/>
                             <Route path='/' component={Home}/>
                         </Switch>
                     </Router>

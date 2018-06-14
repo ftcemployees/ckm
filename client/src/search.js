@@ -73,9 +73,6 @@ export class SearchComponent extends React.Component {
             this.props.setSearch(event.target.value)
             console.log(event.target.value);
         }
-        // this.setState({
-        //     value: newValue
-        // });
     };
 
     onSuggestionsFetchRequested = ({ value }) => {
@@ -106,7 +103,9 @@ export class SearchComponent extends React.Component {
                 onSuggestionsClearRequested={this.onSuggestionsClearRequested}
                 getSuggestionValue={getSuggestionValue}
                 renderSuggestion={renderSuggestion}
-                inputProps={inputProps} />
+                inputProps={inputProps}>
+
+            </Autosuggest>
         );
     }
 }

@@ -81,21 +81,21 @@ export class Filter extends React.Component {
 
     render() {
         return (
-          <div ref="filters" className="filter">
-              <h1>Filter</h1>
+            <div ref="filters" className="filter">
+                <h1>Filter</h1>
 
-              <h2>Era</h2>
-              {eras.map((val) => this.createCheckBoxes(val, this.state.filters.era))}
+                <h2>Era</h2>
+                {eras.map((val) => this.createCheckBoxes(val, this.state.filters.era))}
 
-              <h2>Category</h2>
-              {categories.map((val) => this.createCheckBoxes(val, this.state.filters.category))}
+                <h2>Category</h2>
+                {categories.map((val) => this.createCheckBoxes(val, this.state.filters.category))}
 
-              <h2>Gender</h2>
-              {genders.map((val) => this.createCheckBoxes(val, this.state.filters.gender))}
+                <h2>Gender</h2>
+                {genders.map((val) => this.createCheckBoxes(val, this.state.filters.gender))}
 
-              <h2>Items</h2>
-              {items.map((val) => this.createCheckBoxes(val, this.state.filters.item))}
-          </div>
+                <h2>Items</h2>
+                {items.map((val) => this.createCheckBoxes(val, this.state.filters.item))}
+            </div>
         );
     }
 }
