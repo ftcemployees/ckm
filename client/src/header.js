@@ -8,8 +8,17 @@ export class Header extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            spin: 0
+            spin: 0,
+            display: 'none',
         };
+    }
+
+    show() {
+        this.setState({display: 'block'})
+    }
+
+    hide(event) {
+        this.setState({display: 'none'})
     }
 
     render () {
@@ -30,9 +39,14 @@ export class Header extends React.Component {
 
         return (
             <div className="header">
+                <div style={{display: this.state.display}} className="fullscreen-search" >
+                    <SearchComponent setSearch={(search) => this.props.setSearch(search)}/>
+                    <button onClick={() => console.log('clicked')} style={{position: 'absolute', fontSize: '16px', color: 'white', marginRight: '5%', padding: '14px 19px', right: '0', width: 'auto'}}>X</button>
+                    <div style={{width: '100%', height: '100%', zIndex: '5'}} onClick={() => this.hide()}></div>
+                </div>
                 <a href="./" className="header-logo">CKM</a>
                 <div className="search-box">
-                    <SearchIcon style={{position: 'absolute', right: '0', color: '#eee', fontSize: '42px', padding: '11px 14px'}}/>
+                    <SearchIcon onClick={() => this.show()} style={{border: '1px solid red', position: 'absolute', right: '0', color: '#eee', fontSize: '42px', margin: '11px 14px'}}/>
                     <SearchComponent setSearch={(search) => this.props.setSearch(search)}/>
                 </div>
                 <button className="upload-button">+</button>

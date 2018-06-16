@@ -30,7 +30,7 @@ create table item (
   constraint pk_item primary key(id)
 );
 
---create table item (
+-- create table item (
 --    item_number int not null,
 --    category text not null,
 --    gender text not null,
@@ -46,6 +46,7 @@ create table item (
 --    updated_at datetime default now(),
 --    deleted_at datetime
 --  );
+-- LOAD DATA LOCAL INFILE './Downloads/ckm.tsv' INTO TABLE ftc.item;
 
 create table tag (
   id int not null auto_increment,
