@@ -3,6 +3,7 @@ import { SearchComponent } from "./search";
 import SearchIcon from 'react-icons/lib/md/search';
 import UserIcon from 'react-icons/lib/md/person';
 import SettingsIcon from 'react-icons/lib/md/settings';
+import HamburgerIcon from 'react-icons/lib/md/dehaze';
 
 export class Header extends React.Component {
     constructor(props) {
@@ -41,12 +42,13 @@ export class Header extends React.Component {
             <div className="header">
                 <div style={{display: this.state.display}} className="fullscreen-search" >
                     <SearchComponent setSearch={(search) => this.props.setSearch(search)}/>
-                    <button onClick={() => console.log('clicked')} style={{position: 'absolute', fontSize: '16px', color: 'white', marginRight: '5%', padding: '14px 19px', right: '0', width: 'auto'}}>X</button>
+                    <button onClick={() => console.log('clicked')} className="search-modal-clear">X</button>
                     <div style={{width: '100%', height: '100%', zIndex: '5'}} onClick={() => this.hide()}></div>
                 </div>
+                <HamburgerIcon onClick={() => this.props.showFilter()} className="filter-button"/>
                 <a href="./" className="header-logo">CKM</a>
                 <div className="search-box">
-                    <SearchIcon onClick={() => this.show()} style={{border: '1px solid red', position: 'absolute', right: '0', color: '#eee', fontSize: '42px', margin: '11px 14px'}}/>
+                    <SearchIcon onClick={() => this.show()} style={{position: 'absolute', right: '0', color: '#eee', fontSize: '42px', margin: '11px 14px'}}/>
                     <SearchComponent setSearch={(search) => this.props.setSearch(search)}/>
                 </div>
                 <button className="upload-button">+</button>

@@ -140,7 +140,7 @@ export class Gallery extends React.Component {
     render() {
         return (
             <div style={{display: 'flex'}}>
-                <Filter setFilter={(filter) => this.loadPhotos(filter)}/>
+                <Filter showFilter={this.props.showFilter} setFilter={(filter) => this.loadPhotos(filter)}/>
                 <div className="gallery">
                     <div className="images">
                         {this.state.data.length ?

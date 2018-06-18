@@ -98,7 +98,7 @@ body{
      display: flex;
      flex-flow: row;
      background: #1d1d1d;
-     padding: 12px 3%;
+     padding: 10px 3%;
  }
 
 /* Style the header links */
@@ -229,6 +229,7 @@ body{
 
     .filter {
         display: none;
+        position: absolute;
     }
 
     /*.search-box .react-autosuggest__container {
@@ -248,6 +249,7 @@ body{
 
     .filter {
         display: none;
+        position: absolute;
     }
 
     .search-box .react-autosuggest__container {
@@ -255,7 +257,7 @@ body{
     }
 
     .header {
-        padding: 6px 3%;
+        padding: 10px 3%;
     }
 
     .react-autosuggest__container {
@@ -565,7 +567,7 @@ i {
     right: 0;
     width: 300px;
     max-width: inherit;
-    margin: 16px 20px;
+    margin: 12px 14px;
     box-sizing: border-box;
 }
 
@@ -575,8 +577,8 @@ i {
 
     width: 0;
     box-sizing: border-box;
-    height: 34px;
-    padding: 10px 20px;
+    height: 44px;
+    padding: 10px 22px;
     font-family: Helvetica, sans-serif;
     font-weight: 100;
     font-size: 16px;
@@ -596,7 +598,6 @@ i {
     outline: none;
     cursor: auto;
     width: 100%;
-    margin: -1px -1px 0 0;
     background: #1d1d1d;
     color: white;
 
@@ -697,6 +698,24 @@ i {
     font-size: 2.4375em;
     padding: 11px;
     text-decoration: none;
+}
+
+
+.filter-button {
+    float: left;
+    color: white;
+    text-align: center;
+    /*padding: 12px 2%;*/
+    padding: 12px;
+    text-decoration: none;
+    vertical-align: middle;
+    font-size: 2.4375em;
+    position: relative;
+    line-height: 25px;
+    width: 40px;
+    min-width: 40px;
+    /*width: 180px;*/
+    font-family: 'Playfair Display SC', serif;
 }
 
 .spin-right {
@@ -852,13 +871,14 @@ i {
 
 .filter {
     position: inherit;
-    z-index: 1;
+    z-index: 2;
     left: 0;
     height: 100%;
     border-right: 1px solid lightgrey;
     box-sizing: border-box;
     overflow-x: hidden;
     text-align: left;
+    background: white;
 }
 
 .filter h1 {
@@ -944,18 +964,6 @@ i {
     transform: rotate(45deg);
 }
 
-.filter-button {
-    float: left;
-    color: white;
-    text-align: center;
-    padding: 15px 20px;
-    text-decoration: none;
-    font-size: 50px;
-    position: relative;
-    line-height: 25px;
-    font-family: 'Playfair Display SC', serif;
-}
-
 .no-results-message {
     color: #1d1d1d;
     width: 100%;
@@ -1030,4 +1038,16 @@ i {
     z-index: 6;
     width: 100%;
     /*background: #eee;*/
+}
+
+.search-modal-clear {
+    position: absolute;
+    font-size: 15px;
+    color: white;
+    /*margin-right: 5%;*/
+    padding: 15px 19px;
+    right: 0;
+    width: auto;
+    background: transparent;
+    border: none;
 }

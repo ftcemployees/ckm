@@ -9,8 +9,14 @@ export class Main extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            search: ''
+            search: '',
+            showFilter: false
         };
+    }
+
+    showFilter(val) {
+        this.setState({showFilter: !this.state.showFilter});
+        console.log(this.state.showFilter)
     }
 
     setSearch(search) {
@@ -22,13 +28,13 @@ export class Main extends React.Component {
     render() {
         return (
             <div className="main">
-                <Header setSort={(sort)=>this.setSort(sort)} setSearch={(search)=>this.setSearch(search)}/>
-                    <Router>
-                        <Switch>
-                            <Route path='/gallery' render={() => <Gallery search={this.state.search} showFilter={this.state.showFilter}/>}/>
-                            <Route path='/' component={Home}/>
-                        </Switch>
-                    </Router>
+                <Header showFilter={() => this.showFilter()} setSort={(sort)=>this.setSort(sort)} setSearch={(search)=>this.setSearch(search)}/>
+                <Router>
+                    <Switch>
+                        <Route path='/gallery' render={() => <Gallery search={this.state.search} showFilter={this.state.showFilter}/>}/>
+                        <Route path='/' component={Home}/>
+                    </Switch>
+                </Router>
                 <Footer/>
             </div>
         )

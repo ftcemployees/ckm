@@ -81,7 +81,7 @@ export class Filter extends React.Component {
 
     render() {
         return (
-            <div ref="filters" className="filter">
+            <div  ref="filters" className="filter">
                 <h1>Filter</h1>
 
                 <h2>Era</h2>
