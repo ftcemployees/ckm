@@ -64,12 +64,29 @@ body{
      width: 100%;
      height: 100%;
      text-align: center;
+     display: inline-block;
  }
+    .eras {
+        width: 80vw;
+        display: inline-block;
+        position: relative;
+        margin: auto;
+        text-align: center;
+        /*grid: 10% / auto auto auto;;*/
+    }
+
+    .eras > div {
+        text-align: center;
+        float: left;
+        position: relative;
+        box-sizing: border-box;
+        width: 16vw;
+        height: 16vw;
+    }
 
 .home-page-image {
     -webkit-box-orient: horizontal;
     border-radius: 50%;
-    display: inline-block;
     position: relative;
     /*animation: slide-up 1.5s;*/
 }
