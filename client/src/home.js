@@ -12,6 +12,27 @@ const eras =
     ,1960
     ,1970];
 
+const categories =
+    ['Apparel'
+    ,'Jewelry'
+    ,'Headdress'
+    ,'Footwear'];
+
+const genders =
+    ['Female'
+    ,'Male'
+    ,'Child'
+    ,'Unisex'];
+
+const items =
+    ['Item'
+    ,'Jacket'
+    ,'Capelet'
+    ,'Dress'
+    ,'Coat'
+    ,'Shawl'
+    ,'Jumpsuit'];
+
 export class Home extends React.Component {
     constructor(props) {
         super(props);
@@ -39,6 +60,21 @@ export class Home extends React.Component {
                 <a href="./gallery"><h3>Eras</h3></a>
                 <div className="eras">
                     {eras.map(this.createEraButtons)}
+                </div>
+
+                <a href="./gallery"><h3>Categories</h3></a>
+                <div className="eras">
+                    {categories.map(this.createEraButtons)}
+                </div>
+
+                <a href="./gallery"><h3>Genders</h3></a>
+                <div className="eras">
+                    {genders.map(this.createEraButtons)}
+                </div>
+
+                <a href="./gallery"><h3>Items</h3></a>
+                <div className="eras">
+                    {items.map(this.createEraButtons)}
                 </div>
             </div>
         );
