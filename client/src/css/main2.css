@@ -55,11 +55,11 @@ a:link {
  */
 .header {
     width: inherit;
-    /*height: 2em;*/
     display: flex;
     flex-flow: row;
     background: #1d1d1d;
     padding: .5em 3%;
+    height: 3em;
 }
     .header-logo {
         float: left;
@@ -77,8 +77,17 @@ a:link {
     float: right;
     position: relative;
     display: inline-flex;
-    /*height: 36px;*/
-    margin-left: 30px;
+    height: 2em;
+    margin: .5em .5em .5em 2em;
+}
+
+.search-icon {
+    position: absolute;
+    right: 0;
+    height: inherit;
+    color: #eee;
+    font-size: 2em;
+    margin: 0 auto;
 }
 
 .search-box * {
@@ -91,23 +100,24 @@ a:link {
     float: right;
     right: 0;
     width: 300px;
+    margin: 0 auto;
     max-width: inherit;
-    /*margin: 12px 14px;*/
     box-sizing: border-box;
 }
 
 .react-autosuggest__input {
     cursor: pointer;
     float: right;
-    background-color: red;
-    width: 100px;
+    /*background-color: red;*/
+    /*width: 100px;*/
+    width: 0;
     box-sizing: border-box;
     height: 44px;
-    /*padding: 10px 22px;*/
+    padding: 0 1.5em;
     font-family: Helvetica, sans-serif;
     font-weight: 100;
     font-size: 16px;
-    /*background-color: transparent;*/
+    background-color: transparent;
     color: #999;
     border: none;
     border-radius: 4px;
@@ -181,4 +191,129 @@ a:link {
 
 .react-autosuggest__suggestion--highlighted {
     background-color: #ddd;
+}
+
+
+
+
+.settings-icon {
+    color: #eee;
+    font-size: 2em;
+    height: inherit;
+    text-decoration: none;
+}
+
+.spin-right {
+    -webkit-animation-name: spin-l;
+    -webkit-animation-duration: 500ms;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-name: spin-l;
+    -moz-animation-duration: 500ms;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: ease-in-out;
+    -ms-animation-name: spin-l;
+    -ms-animation-duration: 500ms;
+    -ms-animation-iteration-count: 1;
+    -ms-animation-timing-function: ease-in-out;
+    /*-o-transition: rotate(180deg);*/
+}
+
+@-moz-keyframes spin-l {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(180deg); }
+}
+@-webkit-keyframes spin-l {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(180deg); }
+}
+@keyframes spin-l {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(180deg);}
+}
+
+.spin-left {
+    -webkit-animation-name: spin-r;
+    -webkit-animation-duration: 500ms;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-name: spin-r;
+    -moz-animation-duration: 500ms;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: ease-in-out;
+    -ms-animation-name: spin-r;
+    -ms-animation-duration: 500ms;
+    -ms-animation-iteration-count: 1;
+    -ms-animation-timing-function: ease-in-out;
+    /*-o-transition: rotate(180deg);*/
+}
+
+@-moz-keyframes spin-r {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(-180deg); }
+}
+@-webkit-keyframes spin-r {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(-180deg); }
+}
+@keyframes spin-r {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(-180deg);}
+}
+
+.dropdown {
+    position: relative;
+    height: inherit;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: block;
+    position: absolute;
+    left: -1em;
+    text-align: center;
+    /*min-width: max-content;*/
+    width: 4em;
+    height: 0;
+    z-index: 1;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    -moz-border-radius-bottomleft: 4px;
+    -moz-border-radius-bottomright: 4px;
+    background-color: #1d1d1d;
+    box-shadow: 0 0 33px 1px #1d1d1d;
+    overflow: hidden;
+
+    transition: height 0.5s linear;
+    -moz-transition: height 0.5s linear; /* Firefox 4 */
+    -webkit-transition: height 0.5s linear; /* Safari and Chrome */
+    -o-transition: height 0.5s linear; /* Opera */
+    -ms-transition: height 0.5s linear; /* Explorer 10 */
+}
+
+.dropdown-content a {
+    color: #999;
+    padding: 15px 0;
+    font-family: Helvetica, sans-serif;
+    font-weight: 300;
+    font-size: 14px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    height: 92px;
+    transition: height 0.5s linear;
+    -moz-transition: height 0.5s linear; /* Firefox 4 */
+    -webkit-transition: height 0.5s linear; /* Safari and Chrome */
+    -o-transition: height 0.5s linear; /* Opera */
+    -ms-transition: height 0.5s linear; /* Explorer 10 */
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
 }

@@ -48,7 +48,7 @@ export class Header extends React.Component {
                 {/*<HamburgerIcon onClick={() => this.props.showFilter()} className="filter-button"/>*/}
                 <a href="./" className="header-logo">CKM</a>
                 <div className="search-box">
-                    <SearchIcon onClick={() => this.show()} style={{position: 'absolute', right: '0', color: '#eee', fontSize: '42px', margin: '11px 14px'}}/>
+                    <SearchIcon onClick={() => this.show()} className={"search-icon"}/>
                     <SearchComponent setSearch={(search) => this.props.setSearch(search)}/>
                 </div>
                 {loginInfo}
