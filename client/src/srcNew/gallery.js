@@ -17,7 +17,6 @@ export class Gallery extends React.Component {
         };
         this.componentWillMount = this.componentWillMount.bind(this);
         this.loadPhotos = this.loadPhotos.bind(this);
-        this.handleClick = this.handleClick.bind(this);
 
         this.loadMorePhotos = this.loadMorePhotos.bind(this);
     }
@@ -99,9 +98,13 @@ export class Gallery extends React.Component {
             });
     }
 
-    handleClick(item, index) {
-
-    }
+    createItems = (item) => (
+        <a key={item.id + '-container'} className="pic-container" href={`/gallery/${item.id}`}>
+            <div key={item.id} className={"pic"} title={item.id}>
+                {item.id + ' ' + item.category + ' ' + item.gender + ' ' + item.item + ' ' + item.era}
+            </div>
+        </a>
+    )
 
     render() {
         return (
@@ -110,16 +113,7 @@ export class Gallery extends React.Component {
                 <div className="gallery">
                     <div className="images">
                         {this.state.data.length ?
-                            this.state.data.map((item, index) => {
-                                return (
-                                    <div key={item.id + '-container'} className={"pic-container"}>
-                                        <div key={item.id} className={"pic"}
-                                             onClick={() => this.handleClick(item, index)} title={item.id}>
-                                            {item.id + ' ' + item.category + ' ' + item.gender + ' ' + item.item + ' ' + item.era + ' ' + item.description}
-                                        </div>
-                                    </div>
-                                )
-                            })
+                            this.state.data.map(this.createItems)
                             : <div className="no-results-message">No Results...</div>
                         }
                     </div>

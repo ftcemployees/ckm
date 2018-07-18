@@ -1,28 +1,34 @@
 import React from 'react';
 
 const eras =
-    [1880
-    ,1890
-    ,1900
-    ,1910
-    ,1920
-    ,1930
-    ,1940
-    ,1950
-    ,1960
-    ,1970];
+    ['<-1880'
+    ,'1890'
+    ,'1900'
+    ,'1910'
+    ,'1920'
+    ,'1930'
+    ,'1940'
+    ,'1950'
+    ,'1960'
+    ,'1970'
+    ,'1980'
+    ,'1990->'];
 
 const categories =
     ['Apparel'
-    ,'Jewelry'
     ,'Headdress'
-    ,'Footwear'];
+    ,'Mics.'
+    ,'Footwear'
+    ,'Purses'
+    ,'Jewelry'
+    ,'Home Décor'
+    ,'Religious'];
 
 const genders =
     ['Female'
     ,'Male'
-    ,'Child'
-    ,'Unisex'];
+    ,'Unisex'
+    ,'Other'];
 
 const items =
     ['Item'
@@ -82,19 +88,19 @@ export class Filter extends React.Component {
     render() {
         return (
             <div  ref="filters" className="filter">
-                <h1>Filter</h1>
+                <h2>Filter</h2>
 
-                <h2>Era</h2>
+                <h3>Era</h3>
                 {eras.map((val) => this.createCheckBoxes(val, this.state.filters.era))}
 
-                <h2>Category</h2>
+                <h3>Category</h3>
                 {categories.map((val) => this.createCheckBoxes(val, this.state.filters.category))}
 
-                <h2>Gender</h2>
+                <h3>Gender</h3>
                 {genders.map((val) => this.createCheckBoxes(val, this.state.filters.gender))}
 
-                <h2>Items</h2>
-                {items.map((val) => this.createCheckBoxes(val, this.state.filters.item))}
+                {/*<h3>Items</h3>*/}
+                {/*{items.map((val) => this.createCheckBoxes(val, this.state.filters.item))}*/}
             </div>
         );
     }

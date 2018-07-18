@@ -1,5 +1,6 @@
 import React from 'react';
 import { Gallery } from "./gallery";
+import { Item } from "./item";
 import { Header } from "./header";
 import { Footer } from "./footer";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
@@ -29,12 +30,15 @@ export class Main extends React.Component {
         return (
             <div className="main">
                 <Header showFilter={() => this.showFilter()} setSort={(sort)=>this.setSort(sort)} setSearch={(search)=>this.setSearch(search)}/>
-                <Router>
-                    <Switch>
-                        <Route path='/gallery' render={() => <Gallery search={this.state.search} showFilter={this.state.showFilter}/>}/>
-                        <Route path='/' component={Home}/>
-                    </Switch>
-                </Router>
+                <div style={{background: 'white'}}>
+                    <Router>
+                        <Switch>
+                            <Route path='/gallery/:item_id' component={Item} />
+                            <Route path='/gallery' render={() => <Gallery search={this.state.search} showFilter={this.state.showFilter}/>}/>
+                            <Route path='/' component={Home}/>
+                        </Switch>
+                    </Router>
+                </div>
                 <Footer/>
             </div>
         )

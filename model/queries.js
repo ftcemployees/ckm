@@ -8,6 +8,9 @@ const newUser = (email, nameFirst, nameLast, pwd) => SQL`
 
 const tag_autofill = (tag_name) => SQL`SELECT name FROM tag WHERE name LIKE '%${tag_name}%'`;
 
+// const item_query = (id) => SQL`SELECT DISTINCT item_number AS 'id', category, gender, item, era, description FROM ftc.item WHERE item_number = ${id}`;
+const item_query = (id) => SQL`SELECT * FROM ftc.item WHERE item_number = ${id}`;
+
 const search_query = function search(filters, lower){
     let filter_query =
         (!Object.keys(filters).map((column) => filters[column]).filter(Boolean).join('')) ?
@@ -30,6 +33,7 @@ const getImages = "select * from users";
 
 exports.login = login;
 exports.tag_autofill = tag_autofill;
+exports.item_query = item_query;
 exports.search_query = search_query;
 exports.tag_suggestion = tag_suggestion;
 exports.getImages = getImages;

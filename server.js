@@ -44,6 +44,18 @@ app.get('/search', (req, res) => {
     });
 });
 
+app.post('/singleItem', (req, res) => {
+    const item_id = JSON.parse(req.body.item_id);
+    con.query(queries.item_query(item_id), function (err, result) {
+        if (err) throw err;
+        if (result[0]) {
+            res.send(result);
+        } else {
+            res.send('');
+        }
+    });
+});
+
 app.get('/tag_suggestion',  (req, res) => {
     const search = req.body.search;
     con.query(queries.tag_suggestion(search), function (err, result, fields) {

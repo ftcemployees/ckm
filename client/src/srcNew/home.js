@@ -1,37 +1,34 @@
 import React from 'react';
 
 const eras =
-    [1880
-    ,1890
-    ,1900
-    ,1910
-    ,1920
-    ,1930
-    ,1940
-    ,1950
-    ,1960
-    ,1970];
+    ['<-1880'
+    ,'1890'
+    ,'1900'
+    ,'1910'
+    ,'1920'
+    ,'1930'
+    ,'1940'
+    ,'1950'
+    ,'1960'
+    ,'1970'
+    ,'1980'
+    ,'1990->'];
 
 const categories =
     ['Apparel'
-    ,'Jewelry'
     ,'Headdress'
-    ,'Footwear'];
+    ,'Mics.'
+    ,'Footwear'
+    ,'Purses'
+    ,'Jewelry'
+    ,'Home Décor'
+    ,'Religious'];
 
 const genders =
     ['Female'
     ,'Male'
-    ,'Child'
-    ,'Unisex'];
-
-const items =
-    ['Item'
-    ,'Jacket'
-    ,'Capelet'
-    ,'Dress'
-    ,'Coat'
-    ,'Shawl'
-    ,'Jumpsuit'];
+    ,'Unisex'
+    ,'Other'];
 
 export class Home extends React.Component {
     constructor(props) {
@@ -53,24 +50,17 @@ export class Home extends React.Component {
 
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/slAZRhTiBdU" frameBorder="0"
                         allow="autoplay; encrypted-media" allowFullScreen/>
-                <a href="./gallery"><h3>Eras</h3></a>
+
+                <a href="./gallery"><h3>Enter The Gallery</h3></a>
+
+                <h3>Eras</h3>
                 <div className="eras">
                     {eras.map(this.createEraButtons)}
                 </div>
 
-                <a href="./gallery"><h3>Categories</h3></a>
-                <div className="eras">
+                <h3>Categories</h3>
+                <div className="categories">
                     {categories.map(this.createEraButtons)}
-                </div>
-
-                <a href="./gallery"><h3>Genders</h3></a>
-                <div className="eras">
-                    {genders.map(this.createEraButtons)}
-                </div>
-
-                <a href="./gallery"><h3>Items</h3></a>
-                <div className="eras">
-                    {items.map(this.createEraButtons)}
                 </div>
             </div>
         );

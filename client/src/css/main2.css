@@ -1,8 +1,9 @@
 body {
     margin: 0;
     padding: 0;
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-family: 'Playfair Display SC', serif;
+    background-color: #1d1d1d;
 }
 
 h1, h2, h3, h4, h5, h6, .header-logo {
@@ -15,6 +16,18 @@ a:link {
     a:link *{
         text-decoration: none;
     }
+
+    a {text-decoration: none; color: inherit;}
+
+footer{
+    text-align: center;
+    height: 6em;
+    line-height: 6em;
+    font-size: .75em;
+    background-color: #1d1d1d;
+    color: #b3b3b3;
+    vertical-align: middle;
+}
 
 .main{
     max-width: inherit;
@@ -29,7 +42,7 @@ a:link {
     display: inline-block;
 }
     .eras {
-        width: 80vw;
+        width: 72vw;
         display: inline-block;
         text-align: center;
         margin:0 auto;
@@ -39,12 +52,34 @@ a:link {
         text-align: center;
         display: inline-block;
         box-sizing: border-box;
-        width: 16vw;
-        height: 16vw;
+        width: 4em;
+        height: 4em;
         border: 1px solid black;
     }
 
     .eras > div > div {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .categories {
+        width: 48vw;
+        display: inline-block;
+        text-align: center;
+        margin:0 auto;
+    }
+
+    .categories > div {
+        text-align: center;
+        display: inline-block;
+        box-sizing: border-box;
+        width: 8em;
+        height: 8em;
+        border: 1px solid black;
+    }
+
+    .categories > div > div {
         position: relative;
         top: 50%;
         transform: translateY(-50%);
@@ -193,9 +228,9 @@ a:link {
     background-color: #ddd;
 }
 
-
-
-
+/**
+ * Settings Icon
+ */
 .settings-icon {
     color: #eee;
     font-size: 2em;
@@ -316,4 +351,244 @@ a:link {
 
 .dropdown:hover .dropbtn {
     background-color: #3e8e41;
+}
+
+
+/**
+ * Gallery
+ */
+.gallery{
+    display:-webkit-box;
+    -webkit-box-orient:horizontal;
+    display: inline-block;
+    width: 100%;
+    padding-top: 12px;
+}
+.images {
+    display: -webkit-box;
+    margin: auto;
+    text-align: center;
+    max-width: 1500px;
+
+    display: -webkit-flex; /* Safari */
+    -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+
+.item-page {
+    text-align: center;
+    box-sizing: border-box;
+    padding: 1em 20vw;
+    min-height: calc(100vh - 8.5em);
+}
+
+/**
+ * Filter
+ */
+.filter {
+    position: inherit;
+    z-index: 2;
+    left: 0;
+    /*height: 100%;*/
+    border-right: 1px solid lightgrey;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    text-align: left;
+    background: white;
+}
+
+/*.filter h1 {*/
+    /*color: darkgray;*/
+    /*text-align: left;*/
+    /*padding: 12px 0;*/
+    /*text-decoration: none;*/
+/*}*/
+
+/*.filter h2 {*/
+    /*color: #1d1d1d;*/
+    /*text-align: left;*/
+    /*padding: 12px 0;*/
+    /*text-decoration: none;*/
+/*}*/
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 20px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (min-width: 1500px) {
+    .pic-container{
+        max-width: 300px;
+        max-height: 300px;
+        width: 17vw;
+        height: 17vw;
+    }
+
+    .filter {
+        width: 225px;
+        padding: 0 30px;
+    }
+
+    .filter-button {
+        display: none;
+    }
+}
+
+@media (max-width: 1500px) {
+    .pic-container{
+        max-width: 300px;
+        max-height: 300px;
+        width: 17vw;
+        height: 17vw;
+    }
+
+    .filter {
+        width: 15vw;
+        padding: 0 2vw;
+    }
+
+    .filter-button {
+        display: none;
+    }
+}
+
+@media (max-width: 1200px) {
+    .pic-container{
+        width: 20vw;
+        height: 20vw;
+    }
+
+    .filter {
+        width: 20vw;
+        padding: 0 2vw;
+    }
+
+    .filter-button {
+        display: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .pic-container{
+        width: 33.33vw;
+        height: 33.33vw;
+    }
+
+    .filter {
+        display: none;
+        position: absolute;
+    }
+
+    /*.search-box .react-autosuggest__container {
+        display: none;
+    }*/
+
+    .filter-button {
+        display: block;
+    }
+}
+
+@media (max-width: 600px) {
+    .pic-container{
+        width: 50vw;
+        height: 50vw;
+    }
+
+    .filter {
+        display: none;
+        position: absolute;
+    }
+
+    .search-box .react-autosuggest__container {
+        display: none;
+    }
+
+    .header {
+        padding: 10px 3%;
+    }
+
+    .react-autosuggest__container {
+        position: relative;
+        float: right;
+    }
 }
