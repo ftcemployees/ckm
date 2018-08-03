@@ -1,6 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 import { Filter } from "./filter";
+const queryString = require('query-string');
 
 export class Gallery extends React.Component {
     constructor(props) {
@@ -22,6 +23,7 @@ export class Gallery extends React.Component {
     }
 
     componentWillMount() {
+        console.log(queryString.parse(this.props.location.search));
         this.loadPhotos({
                 era: [],
                 category: [],
