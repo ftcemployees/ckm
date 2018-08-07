@@ -19,13 +19,12 @@ export class Gallery extends React.Component {
     }
 
     componentWillMount() {
-        this.loadPhotos({
-                era: [],
-                category: [],
-                gender: [],
-                item: []
-            });
+        let query = queryString.parse(this.props.location.search);
+        Object.keys(query).map((filters) => (query[filters] = query[filters].split(',')));
+
+        this.loadPhotos(query);
     }
+
     componentWillReceiveProps(props) {
         let query = queryString.parse(props.location.search);
         Object.keys(query).map((filters) => (query[filters] = query[filters].split(',')));
@@ -108,7 +107,7 @@ export class Gallery extends React.Component {
     render() {
         return (
             <div style={{display: 'flex'}}>
-                <Filter history={this.props.history} showFilter={this.props.showFilter} setFilter={(filter) => this.loadPhotos(filter)}/>
+                <Filter history={this.props.history} location={this.props.location} showFilter={this.props.showFilter} setFilter={(filter) => this.loadPhotos(filter)}/>
                 <div className="gallery">
                     <div className="images">
                         {this.state.data.length ?

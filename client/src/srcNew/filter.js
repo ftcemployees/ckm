@@ -1,4 +1,5 @@
 import React from 'react';
+const queryString = require('query-string');
 
 const eras =
     ['<-1880'
@@ -42,6 +43,13 @@ export class Filter extends React.Component {
             }
         };
     }
+
+    // componentWillMount() {
+    //     let query = queryString.parse(this.props.location.search);
+    //     Object.keys(query).map((filters) => (query[filters] = query[filters].split(',')));
+    //
+    //     this.setState({filters: query});
+    // }
 
     handleChange(column, e) {
         // current array of options
