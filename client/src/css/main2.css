@@ -33,6 +33,7 @@ footer{
     max-width: inherit;
     min-width: fit-content;
     min-height: 100vh;
+    background-color: white;
 }
 
 .home-page {

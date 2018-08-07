@@ -8,9 +8,6 @@ export class Gallery extends React.Component {
         super(props);
         this.state = {
             data: [],
-            modalIsOpen: false,
-            picIndex: 0,
-            picView: {"id": 1},
             size: 300,
             searchToken: {},
             lower_value: 0,
@@ -18,18 +15,22 @@ export class Gallery extends React.Component {
         };
         this.componentWillMount = this.componentWillMount.bind(this);
         this.loadPhotos = this.loadPhotos.bind(this);
-
         this.loadMorePhotos = this.loadMorePhotos.bind(this);
     }
 
     componentWillMount() {
-        console.log(queryString.parse(this.props.location.search));
         this.loadPhotos({
                 era: [],
                 category: [],
                 gender: [],
                 item: []
             });
+    }
+    componentWillReceiveProps(props) {
+        let query = queryString.parse(props.location.search);
+        Object.keys(query).map((filters) => (query[filters] = query[filters].split(',')));
+
+        this.loadPhotos(query);
     }
 
     componentDidMount() {
@@ -41,12 +42,9 @@ export class Gallery extends React.Component {
     }
 
     onScroll = () => {
-        if (
-            (window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 250) &&
-            this.state.data.length && this.state.isLoaded
-        ) {
+        if ((window.innerHeight + window.scrollY) >= (document.body.offsetHeight - 250) &&
+            this.state.data.length && this.state.isLoaded)
             this.loadMorePhotos();
-        }
     }
 
     async loadPhotos(searchToken) {
@@ -64,10 +62,9 @@ export class Gallery extends React.Component {
             console.log(response.data.length);
             if (response.data.length > 0) {
                 self.setState({data: response.data});
-                self.setState({isLoaded: true})
-            } else {
-                self.setState({data: []})
-            }
+                self.setState({isLoaded: true});
+            } else
+                self.setState({data: []});
         })
         .catch(function (error) {
             self.setState({data: []});
@@ -111,7 +108,7 @@ export class Gallery extends React.Component {
     render() {
         return (
             <div style={{display: 'flex'}}>
-                <Filter showFilter={this.props.showFilter} setFilter={(filter) => this.loadPhotos(filter)}/>
+                <Filter history={this.props.history} showFilter={this.props.showFilter} setFilter={(filter) => this.loadPhotos(filter)}/>
                 <div className="gallery">
                     <div className="images">
                         {this.state.data.length ?

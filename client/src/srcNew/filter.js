@@ -15,29 +15,20 @@ const eras =
     ,'1990->'];
 
 const categories =
-    ['Apparel'
-    ,'Headdress'
-    ,'Mics.'
-    ,'Footwear'
-    ,'Purses'
-    ,'Jewelry'
-    ,'Home Décor'
-    ,'Religious'];
+    ['apparel'
+    ,'headdress'
+    ,'misc.'
+    ,'footwear'
+    ,'purses'
+    ,'jewelry'
+    ,'home décor'
+    ,'religious'];
 
 const genders =
-    ['Female'
-    ,'Male'
-    ,'Unisex'
-    ,'Other'];
-
-const items =
-    ['Item'
-    ,'Jacket'
-    ,'Capelet'
-    ,'Dress'
-    ,'Coat'
-    ,'Shawl'
-    ,'Jumpsuit'];
+    ['female'
+    ,'male'
+    ,'unisex'
+    ,'other'];
 
 export class Filter extends React.Component {
     constructor(props) {
@@ -50,14 +41,7 @@ export class Filter extends React.Component {
                 item: []
             }
         };
-
-        // this.setSort = this.setSort.bind(this);
     }
-
-    componentWillMount() {
-        // (eras + categories + genders + items);
-    }
-
 
     handleChange(column, e) {
         // current array of options
@@ -74,9 +58,16 @@ export class Filter extends React.Component {
             column.splice(index, 1);
         }
 
-        this.props.setFilter(this.state.filters);
-    }
+        const filters = this.state.filters;
 
+        const query = Object.keys(filters).map((column) =>
+            filters[column].length && `${column}=` + filters[column]
+                .map((filter) => filter)
+                .filter(Boolean).join(','))
+            .filter(Boolean).join('&');
+
+        this.props.history.push('/gallery?' + query);
+    }
 
     createCheckBoxes = (item, column) => (
         <label key={item}  className="container">{item}
@@ -98,9 +89,6 @@ export class Filter extends React.Component {
 
                 <h3>Gender</h3>
                 {genders.map((val) => this.createCheckBoxes(val, this.state.filters.gender))}
-
-                {/*<h3>Items</h3>*/}
-                {/*{items.map((val) => this.createCheckBoxes(val, this.state.filters.item))}*/}
             </div>
         );
     }
