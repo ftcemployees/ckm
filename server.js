@@ -16,7 +16,7 @@ app.use(expressSessions({secret: 'lol, ggwp', saveUninitialized: false, resave: 
 app.post('/login', function (req, res) {
     const email = req.body.email;
     const pwd = req.body.pwd;
-    con.query(queries.login(email), function (err, result, fields) {
+    con.query(queries.login(email), function (err, result) {
         if (err) throw err;
         if (result[0]) {
             bcrypt.compare(pwd, result[0].pwd, function (error, response) {
@@ -24,6 +24,8 @@ app.post('/login', function (req, res) {
                     req.session.nameFirst = result[0].name_first;
                     res.send(result[0].name_first);
                     console.log(req.session);
+                } else {
+                    res.send('');
                 }
             })
         } else {
