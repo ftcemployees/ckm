@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Ckm } from './srcNew/app-ckm';
-// import './css/main.css';
-import './css/main2.css';
+import { Ckm } from './app-ckm';
+import './css/main.css';
 import WebFont from 'webfontloader';
 
 ReactDOM.render(<Ckm />, document.getElementById('root'));

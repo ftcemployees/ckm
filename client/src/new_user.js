@@ -94,9 +94,10 @@ export class NewUser extends React.Component {
     
     render() {
         return (
+            <div className="new-user">
               <div className="form">
                 <form className="register-form">
-                  <p className="message-two">Create an account</p>
+                  <h2>Create an account</h2>
                   <br />
                   <input type="name" placeholder="first name" onChange={this.handleNameFirstInput} value={this.state.nameFirst}/>
                   <input type="name" placeholder="last name" onChange={this.handleNameLastInput} value={this.state.nameLast}/>
@@ -107,6 +108,7 @@ export class NewUser extends React.Component {
                   <p className="incorrect">{this.state.errorMessage}</p>
                 </form>
               </div>
+            </div>
         )
     }
 }
