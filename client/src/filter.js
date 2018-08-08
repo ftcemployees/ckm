@@ -58,32 +58,6 @@ export class Filter extends React.Component {
         this.setState({filters: tmp});
     }
 
-    // handleChange(column, e) {
-    //     // current array of options
-    //     let val = e.target.value;
-    //     let index;
-    //
-    //     // check if the check box is checked or unchecked
-    //     if (e.target.checked) {
-    //         // add the numerical value of the checkbox to options array
-    //         column.push(val)
-    //     } else {
-    //         // or remove the value from the unchecked checkbox from the array
-    //         index = column.indexOf(val);
-    //         column.splice(index, 1);
-    //     }
-    //
-    //     const filters = this.state.filters;
-    //
-    //     const query = Object.keys(filters).map((column) =>
-    //         filters[column].length && `${column}=` + filters[column]
-    //             .map((filter) => filter)
-    //             .filter(Boolean).join(','))
-    //         .filter(Boolean).join('&');
-    //
-    //     this.props.history.push('/gallery?' + query);
-    // }
-
     handleClicked(column, e) {
         // current array of options
         let val = e.target.value;

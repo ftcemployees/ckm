@@ -6,7 +6,6 @@ import { Item } from "./item";
 import { Header } from "./header";
 import { Footer } from "./footer";
 import { Home } from "./home";
-// import { Main } from './main';
 import { NewUser } from './new_user';
 
 export class Ckm extends React.Component {

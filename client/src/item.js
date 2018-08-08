@@ -9,10 +9,7 @@ export class Item extends React.Component {
             item_id: props.match.params.item_id
         };
     }
-
-    componentWillMount() {
-        this.loadItem();
-    }
+    componentWillMount() { this.loadItem(); }
 
     async loadItem() {
         let self = this;
