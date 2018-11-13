@@ -17,7 +17,7 @@ const eras =
 const categories =
     ['apparel'
     ,'headdress'
-    ,'pics.'
+    ,'misc.'
     ,'footwear'
     ,'purses'
     ,'jewelry'
