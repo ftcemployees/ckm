@@ -30,6 +30,16 @@ create table item (
   constraint pk_item primary key(id)
 );
 
+create table tag (
+  id int not null auto_increment,
+  name text not null,
+  created_at datetime default now(),
+  updated_at datetime default now(),
+  deleted_at datetime,
+
+  constraint pk_tag primary key(id)
+);
+
 -- create table item (
 --    item_number int not null,
 --    category text not null,
@@ -47,16 +57,6 @@ create table item (
 --    deleted_at datetime
 --  );
 -- LOAD DATA LOCAL INFILE './Downloads/ckm.tsv' INTO TABLE ftc.item;
-
-create table tag (
-  id int not null auto_increment,
-  name text not null,
-  created_at datetime default now(),
-  updated_at datetime default now(),
-  deleted_at datetime,
-
-  constraint pk_tag primary key(id)
-);
 
 --DELETE FROM tag;
 --ALTER TABLE tag AUTO_INCREMENT = 1;

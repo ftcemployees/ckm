@@ -23,7 +23,7 @@ const search_query = function search(filters, lower){
                     .filter(Boolean).join(`) AND (`)
                 }) LIMIT 50 OFFSET ${lower}`;
 
-    let query = SQL`SELECT DISTINCT item_number AS 'id', category, gender, item, era, description FROM ftc.item `.append(filter_query);
+    let query = SQL`SELECT DISTINCT id, category, gender, item, era, description FROM ftc.item `.append(filter_query);
 
     return query;
 };

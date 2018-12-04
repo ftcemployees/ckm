@@ -118,7 +118,12 @@ app.post('/new_user', (req, res) => {
             })
         })
     })
-})
+});
+
+app.get('/*', (req, res) => {
+    console.log("GET request made to the home page");
+    return res.sendFile(__dirname + '/client/index.html');
+});
 
 server = app.listen(5000, () => {
     console.log('Server is listening on port: ', server.address().port);
